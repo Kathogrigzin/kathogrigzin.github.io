@@ -31,378 +31,425 @@
             src: url('fonts/HuaKangFangSongW6.woff2') format('woff2');
             font-weight: normal; font-style: normal; font-display: swap;
         }
-code
-Code
-* { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
-        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --glass-bg: rgba(20, 20, 30, 0.65);
-        --glass-border: rgba(255, 255, 255, 0.15);
-        --text-light: rgba(240, 240, 255, 0.95);
-        --text-accent: #FFD700;
-        --text-like: #e74c3c;
-        --tibetan-title-font: 'Monlam Uni Chouk', 'Noto Sans Tibetan', serif;
-        --chinese-title-font: 'WenDingCuXingKai', 'Noto Serif TC', serif;
-        --english-font: 'GaramondUSI', 'ACaslonPro', 'Inter', sans-serif;
-        --chinese-content-font: 'HuaKangFangSongW6', 'Noto Serif TC', serif;
-        --border-radius-main: 10px;
-        --border-radius-small: 5px;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-        font-family: var(--english-font);
-        background-color: #1a1a2e;
-        min-height: 100vh;
-        color: var(--text-light);
-        display: flex;
-        flex-direction: column;
-        padding-top: 52px;
-        position: relative;
-    }
-        /* --- 背景幻燈片樣式 --- */
-    #background-slider {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: -10; /* 確保它在所有內容的後面 */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-bg: rgba(20, 20, 30, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-light: rgba(240, 240, 255, 0.95);
+            --text-accent: #FFD700;
+            --text-like: #e74c3c;
+            --tibetan-title-font: 'Monlam Uni Chouk', 'Noto Sans Tibetan', serif;
+            --chinese-title-font: 'WenDingCuXingKai', 'Noto Serif TC', serif;
+            --english-font: 'GaramondUSI', 'ACaslonPro', 'Inter', sans-serif;
+            --chinese-content-font: 'HuaKangFangSongW6', 'Noto Serif TC', serif;
+            --border-radius-main: 10px;
+            --border-radius-small: 5px;
+        }
+
+        body {
+            font-family: var(--english-font);
+            background-color: #1a1a2e;
+            min-height: 100vh;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            padding-top: 52px;
+            position: relative;
+        }
+            /* --- 背景幻燈片樣式 --- */
+        #background-slider {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -10; /* 確保它在所有內容的後面 */
 }
-code
-Code
-.bg-slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        opacity: 0; /* 預設隱藏 */
-        transition: opacity 1.5s ease-in-out; /* 這是淡入淡出的動畫效果 */
+
+        .bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0; /* 預設隱藏 */
+            transition: opacity 1.5s ease-in-out; /* 這是淡入淡出的動畫效果 */
 }
-code
-Code
-.bg-slide.visible {
-opacity: 1; /* 顯示的 slide 透明度為 1 */
+
+        .bg-slide.visible {
+    opacity: 1; /* 顯示的 slide 透明度為 1 */
 }
-body::before {
-content: '';
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="books" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="20" height="80" x="10" y="10" fill="rgba(255,255,255,0.05)" rx="2"/><rect width="20" height="75" x="35" y="15" fill="rgba(255,255,255,0.03)" rx="2"/><rect width="20" height="70" x="60" y="20" fill="rgba(255,255,255,0.04)" rx="2"/></pattern></defs><rect width="100%" height="100%" fill="url(%23books)"/></svg>') repeat;
-opacity: 0.3;
-z-index: -1;
-}
-code
-Code
-.top-nav {
-        background: rgba(10, 10, 20, 0.85);
-        padding: 8px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--glass-border);
-        height: 52px;
-    }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="books" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="20" height="80" x="10" y="10" fill="rgba(255,255,255,0.05)" rx="2"/><rect width="20" height="75" x="35" y="15" fill="rgba(255,255,255,0.03)" rx="2"/><rect width="20" height="70" x="60" y="20" fill="rgba(255,255,255,0.04)" rx="2"/></pattern></defs><rect width="100%" height="100%" fill="url(%23books)"/></svg>') repeat;
+            opacity: 0.3;
+            z-index: -1;
+        }
 
-    .nav-left { display: flex; gap: 10px; align-items: center; }
-    .nav-right { display: flex; gap: 8px; align-items: center; }
-    
-    .nav-item, .top-nav-btn {
-        color: var(--text-light); 
-        text-decoration: none; 
-        padding: 6px 10px;
-        border-radius: var(--border-radius-small); 
-        transition: 0.2s, color 0.2s;
-        font-size: 12px; 
-        background: transparent; 
-        border: 1px solid transparent; 
-        cursor: pointer;
-        white-space: nowrap;
-    }
-    #toggleSidebarBtn { font-size: 1.2rem; padding: 4px 8px; }
-    
-    .nav-item:hover, .top-nav-btn:hover { 
-        background: rgba(255, 255, 255, 0.1); 
-        color: white; 
-    }
+        .top-nav {
+            background: rgba(10, 10, 20, 0.85);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            height: 52px;
+        }
 
-    #modeSelectorScreen { display: flex; flex-direction: column; align-items: center; justify-content: center; flex-grow: 1; text-align: center; position: relative; z-index: 10; }
-    .mode-selector-content {  background-image: url('images/flower_transparent.png'); background-size: cover; background-position: center; background-repeat: no-repeat; backdrop-filter: transparent; border-radius: var(--border-radius-main); padding: 3rem 2.5rem; border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 10px 35px rgba(0,0,0,0.2); animation: fadeInUp 0.8s ease-out; max-width: 800px; width: 90%;}
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
-    .main-title {font-family: var(--chinese-title-font), 'Noto Serif TC', serif; font-size: 3.2rem; font-weight: bold; margin-bottom: 0.8rem; letter-spacing: 1px; background: linear-gradient(45deg, #fff, #e0e0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;}
-    .tibetan-subtitle {font-family: var(--tibetan-title-font), 'Noto Sans Tibetan', serif; font-size: 1.5rem; color: var(--text-light); margin-bottom: 1.2rem; opacity: 0.9;}
-    .english-subtitle { font-size: 1rem; color: var(--text-light); margin-bottom: 2rem; opacity: 0.8; font-style: italic; font-family: var(--english-font);}
-    .mode-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem; }
-    .mode-button { padding: 0.9rem 2rem; font-size: 1rem; font-weight: 500; border: none; border-radius: 20px; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; background: rgba(255,255,255,0.1); color: white; border: 1px solid var(--glass-border); backdrop-filter: blur(8px); min-width: 160px;}
-    .mode-button:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 15px 30px rgba(0,0,0,0.25); background: rgba(255,255,255,0.25); }
-    #appContainer { display: none; width: 100%; flex-grow: 1; opacity: 0; animation: fadeIn 0.5s ease-out forwards; }
-    @keyframes fadeIn { to { opacity: 1; } }
-    body.app-active #appContainer { display: flex; }
-
-    body.app-active {         
-    .sidebar {
-        width: 300px;
-        background: var(--glass-bg); 
-        backdrop-filter: blur(20px); 
-        overflow-y: auto;
-        position: fixed; 
-        height: calc(100vh - 52px);
-        left: 0; 
-        top: 52px;
-        z-index: 200;
-        border-right: 1px solid var(--glass-border);
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-out;
-        border-top-right-radius: var(--border-radius-main);
-    }
-    .sidebar.active {
-        transform: translateX(0);
-    }
-
-    .sidebar-header { padding: 1.8rem 1.5rem; }
-    .sidebar-title { font-family: var(--chinese-title-font); }
-    .sidebar-subtitle { font-family: var(--tibetan-title-font); }
-}
-.main-content {
-flex: 1;
-margin-left: 0;
-min-height: calc(100vh - 52px);
-position: relative;
-transition: margin-left 0.3s ease-out, margin-right 0.3s ease-out;
-padding: 1.5rem;
-z-index: 50;
-}
-.main-content.sidebar-active {
-margin-left: 300px;
-}
-.main-content.with-right-sidebar {
-margin-right: 300px;
-}
-.main-content.sidebar-active.with-right-sidebar {
-margin-left: 300px;
-margin-right: 300px;
-}
-code
-Code
-.utility-sidebar {
-        width: 300px;
-        background: var(--glass-bg); 
-        backdrop-filter: blur(20px); 
-        overflow-y: auto;
-        position: fixed; 
-        height: calc(100vh - 52px);
-        right: 0; 
-        top: 52px;
-        z-index: 190;
-        border-left: 1px solid var(--glass-border);
-        transition: transform 0.3s ease-out;
-        border-top-left-radius: var(--border-radius-main);
-        transform: translateX(100%);
-    }
-    .utility-sidebar.active {
-        transform: translateX(0);
-    }
-
-    .utility-sidebar-header { padding: 1.8rem 1.5rem; position: relative; border-bottom: 1px solid var(--glass-border); }
-    .utility-sidebar-title { font-family: var(--chinese-title-font); margin: 0; color: var(--text-light); }
-    .utility-sidebar-content { padding: 1rem; }
-    .utility-item { padding: 0.8rem 1rem; margin: 0.3rem 0; background: rgba(255, 255, 255, 0.05); border-radius: var(--border-radius-small); cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.8rem; color: var(--text-light); }
-    .utility-item:hover { background: rgba(255, 255, 255, 0.15); transform: translateX(5px); }
-    .utility-item-icon { font-size: 1.2rem; width: 1.5rem; text-align: center; }
-    #favoritesListContainerEl .favorite-item { padding: 0.6rem 0.8rem; margin-bottom: 0.3rem; background: rgba(255,255,255,0.08); border-radius: var(--border-radius-small); font-size:0.9em; cursor:pointer; transition: background 0.2s;}
-    #favoritesListContainerEl .favorite-item:hover { background: rgba(255,255,255,0.15); }
-
-    .container { max-width: 1300px; margin: 0 auto; }
-    .header { text-align: center; margin-bottom: 2.5rem; color: white; }
-    .header h1 { font-family: var(--chinese-title-font); font-size: 2.8rem; }
-    .header .tibetan-subtitle-header { font-family: var(--tibetan-title-font); font-size: 1.6rem; margin-top: -0.5rem; }
-    .header p:not(.tibetan-subtitle-header) { font-family: var(--english-font); }
-    .search-section { max-width: 650px; margin: 0 auto 2.5rem; }
-    .search-container { position: relative; border-radius: var(--border-radius-small); }
-    .search-input { width: 100%; padding: 0.8rem 1rem 0.8rem 3rem; font-size: 1rem; background: rgba(255, 255, 255, 0.1); border: 1px solid var(--glass-border); border-radius: var(--border-radius-small); color: var(--text-light); font-family: var(--english-font);}
-    .search-input::placeholder { color: rgba(255, 255, 255, 0.6); }
-    .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); font-size: 1.1rem; color: rgba(255, 255, 255, 0.6); }
-    .stats-bar { background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); border: 1px solid var(--glass-border); border-radius: var(--border-radius-main); padding: 1rem 1.5rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .view-controls { display: flex; gap: 0.5rem; }
-    .view-btn { padding: 0.6rem 1rem; font-size: 0.85rem; border-radius: var(--border-radius-small); border: 1px solid var(--glass-border); background: transparent; color: var(--text-light); cursor: pointer; transition: all 0.2s; }
-    .view-btn:hover, .view-btn.active { background: rgba(255, 255, 255, 0.2); color: white; }
-
-    .documents-grid {
-        background: transparent;
-        display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 1.5rem; 
-        margin-bottom: 2rem;
-    }
-
-    .document-card {
-        background: transparent;
-        backdrop-filter: blur(20px);
-        border-radius: var(--border-radius-main); 
-        padding: 1.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.824); 
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);;
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .document-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .document-title { 
-        font-size: 1.3rem; 
-        font-family: var(--tibetan-title-font);
-        margin-bottom: 0.5rem;
-    }
-    .document-subtitle { 
-        font-size: 1.1rem; 
-        font-family: var(--chinese-title-font);
-        margin-bottom: 0.5rem;
-        color: var(--text-accent);
-    }
-    .document-meta { 
-        font-size: 0.85rem;
-        opacity: 0.8;
-        margin-bottom: 1rem;
-        font-family: var(--english-font);
-    }
-    .document-preview { 
-        font-size: 0.9rem; 
-        padding: 0.8rem; 
-        border-radius: var(--border-radius-small);
-        background: rgba(0, 0, 0, 0.2);
-        margin-bottom: 1rem;
-        opacity: 0.9;
-        line-height: 1.5;
-        flex-grow: 1; 
-        max-height: 100px; 
-        overflow: hidden;
-        font-family: var(--chinese-content-font);
-    }
-    .document-card-actions {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-        margin-top: auto; 
-    }
-    .like-btn {
-        background: none;
-        border: none;
-        color: var(--text-light);
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0.3rem;
-        margin-left: auto;
-        transition: color 0.2s, transform 0.2s;
-    }
-    .like-btn:hover {
-        transform: scale(1.1);
-    }
-    .like-btn.liked {
-        color: var(--text-like);
-    }
-
-    .btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; border-radius: var(--border-radius-small); justify-content: center; text-align: center; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.1); color: var(--text-light); cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; }
-    .btn:hover { background: rgba(255, 255, 255, 0.2); color: white; }
-
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; justify-content: center; align-items: center;}
-    .modal.active { display: flex; }
-    .modal-content { background-image: url('images/modal_bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-blend-mode: overlay; background-color: rgba(20, 20, 30, 0.6); color: white;
-backdrop-filter: blur(20px); backdrop-filter: blur(5px); border: 1px solid var(--glass-border); border-radius: var(--border-radius-main); padding: 2rem; max-width: 90vw; max-height: 90vh; overflow-y: auto; position: relative; display: flex; flex-direction: column; }
-    .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--text-light); font-size: 1.5rem; cursor: pointer; z-index: 10; }
-
-    .image-gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1rem;
-        padding: 1rem;
-    }
-    .image-gallery img {
-        width: 100%;
-        height: auto;
-        border-radius: var(--border-radius-small);
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
-    .image-gallery img:hover {
-        transform: scale(1.05);
-    }
-
-    footer { text-align: center; padding: 2rem; background: rgba(0, 0, 0, 0.2); color: var(--text-light); font-size: 0.9rem; }
-    .social-links { margin-bottom: 1rem; }
-    .social-links a { color: var(--text-light); text-decoration: none; margin: 0 1rem; padding: 0.5rem; border-radius: var(--border-radius-small); transition: background 0.2s; }
-    .social-links a:hover { background: rgba(255, 255, 255, 0.1); }
-
-    .language-switcher-modal { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--glass-border); display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .language-switcher-modal button { padding: 0.5rem 1rem; font-size: 0.9rem; border-radius: var(--border-radius-small); border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.1); color: var(--text-light); cursor: pointer; font-family: var(--english-font); }
-    .language-switcher-modal button:hover { background: rgba(255, 255, 255, 0.2); }
-    .language-switcher-modal button.active { background: var(--text-accent); color: #333; font-weight: bold; border-color: var(--text-accent); }
-
-    #modalHeaderContent { margin-bottom: 1rem; }
-    .modal-document-title-zh { font-family: var(--chinese-title-font); margin-bottom: 0.2rem; font-size: 1.8rem; }
-    .modal-document-title-bo { font-family: var(--tibetan-title-font); margin-bottom: 0.2rem; opacity: 0.9; font-size: 1.4rem;}
-    .modal-document-title-en { font-style: italic; margin-bottom: 0.5rem; opacity: 0.8; font-size: 1rem; font-family: var(--english-font); }
-    
-    .language-content-container { line-height: 1.8; font-size: 1rem; flex-grow: 1; overflow-y: auto; min-height: 100px; }
-    .language-content { margin-bottom: 1.5rem; }
-    .language-content h4 { font-family: var(--chinese-title-font); margin-bottom: 0.5rem; color: var(--text-accent); font-size: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.3rem; }
-    .tibetan-text, .tibetan-text p { font-family: 'Noto Sans Tibetan', serif; }
-    .chinese-text, .chinese-text p { font-family: var(--chinese-content-font); }
-    .english-text, .english-text p { font-family: var(--english-font); }
-    
-    #modalLanguageSeparator, #modalLanguageSeparator2 { border: 0; height: 1px; background: var(--glass-border); margin: 1.5rem 0; }
-    #modalMetaContent { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--glass-border); font-size: 0.9em; opacity: 0.8; flex-shrink: 0; font-family: var(--english-font); }
-
-    @media (max-width: 768px) {
-        body { padding-top: 48px; }
-        .top-nav { height: auto; padding: 6px 10px; flex-wrap: wrap; justify-content: center; }
-        .nav-left { gap: 5px; margin-bottom: 5px; width: auto; justify-content: flex-start; order:1; flex-grow: 1;}
-        #toggleSidebarBtn { order: -1; margin-right: auto;}
-        .nav-right { width: auto; justify-content: flex-end; order:2; flex-grow: 1; }
-        .nav-item, .top-nav-btn { font-size: 13px; padding: 5px 8px; }
-
-        .sidebar { width: 260px; height: calc(100vh - 48px); top: 48px; }
-        .main-content.sidebar-active { margin-left: 260px; }
+        .nav-left { display: flex; gap: 10px; align-items: center; }
+        .nav-right { display: flex; gap: 8px; align-items: center; }
         
-        .utility-sidebar { width: 260px; height: calc(100vh - 48px); top: 48px; }
-        .main-content.with-right-sidebar { margin-right: 260px; }
-        .main-content.sidebar-active.with-right-sidebar { margin-left: 260px; margin-right: 260px;}
-
-        .main-title { font-size: 2.2rem; white-space: normal; }
-        .mode-selector-content { padding: 2rem 1.5rem; }
-        .documents-grid { grid-template-columns: 1fr; }
-        .modal-content { max-width: 95vw; max-height: 95vh; padding: 1.5rem; }
+        .nav-item, .top-nav-btn {
+            color: var(--text-light); 
+            text-decoration: none; 
+            padding: 6px 10px;
+            border-radius: var(--border-radius-small); 
+            transition: 0.2s, color 0.2s;
+            font-size: 12px; 
+            background: transparent; 
+            border: 1px solid transparent; 
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        #toggleSidebarBtn { font-size: 1.2rem; padding: 4px 8px; }
         
-        .main-title { font-size: 2.5rem; } 
-        .tibetan-subtitle { font-size: 1.3rem; }
-        .english-subtitle { font-size: 0.9rem; }
-    }
-    
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
-    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+        .nav-item:hover, .top-nav-btn:hover { 
+            background: rgba(255, 255, 255, 0.1); 
+            color: white; 
+        }
 
-</style>
+        #modeSelectorScreen { display: flex; flex-direction: column; align-items: center; justify-content: center; flex-grow: 1; text-align: center; position: relative; z-index: 10; }
+        .mode-selector-content {  background-image: url('images/flower_transparent.png'); background-size: cover; background-position: center; background-repeat: no-repeat; backdrop-filter: transparent; border-radius: var(--border-radius-main); padding: 3rem 2.5rem; border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 10px 35px rgba(0,0,0,0.2); animation: fadeInUp 0.8s ease-out; max-width: 800px; width: 90%;}
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+        .main-title {font-family: var(--chinese-title-font), 'Noto Serif TC', serif; font-size: 3.2rem; font-weight: bold; margin-bottom: 0.8rem; letter-spacing: 1px; background: linear-gradient(45deg, #fff, #e0e0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;}
+        .tibetan-subtitle {font-family: var(--tibetan-title-font), 'Noto Sans Tibetan', serif; font-size: 1.5rem; color: var(--text-light); margin-bottom: 1.2rem; opacity: 0.9;}
+        .english-subtitle { font-size: 1rem; color: var(--text-light); margin-bottom: 2rem; opacity: 0.8; font-style: italic; font-family: var(--english-font);}
+        .mode-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.5rem; }
+        .mode-button { padding: 0.9rem 2rem; font-size: 1rem; font-weight: 500; border: none; border-radius: 20px; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; background: rgba(255,255,255,0.1); color: white; border: 1px solid var(--glass-border); backdrop-filter: blur(8px); min-width: 160px;}
+        .mode-button:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 15px 30px rgba(0,0,0,0.25); background: rgba(255,255,255,0.25); }
+        #appContainer { display: none; width: 100%; flex-grow: 1; opacity: 0; animation: fadeIn 0.5s ease-out forwards; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        body.app-active #appContainer { display: flex; }
+
+        body.app-active {         
+        .sidebar {
+            width: 300px;
+            background: var(--glass-bg); 
+            backdrop-filter: blur(20px); 
+            overflow-y: auto;
+            position: fixed; 
+            height: calc(100vh - 52px);
+            left: 0; 
+            top: 52px;
+            z-index: 200;
+            border-right: 1px solid var(--glass-border);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out;
+            border-top-right-radius: var(--border-radius-main);
+        }
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar-header { padding: 1.8rem 1.5rem; }
+        .sidebar-title { font-family: var(--chinese-title-font); }
+        .sidebar-subtitle { font-family: var(--tibetan-title-font); }
+}
+        .main-content {
+            flex: 1; 
+            margin-left: 0;
+            min-height: calc(100vh - 52px);
+            position: relative; 
+            transition: margin-left 0.3s ease-out, margin-right 0.3s ease-out;
+            padding: 1.5rem;
+            z-index: 50;
+        }
+        .main-content.sidebar-active {
+            margin-left: 300px;
+        }
+        .main-content.with-right-sidebar {
+            margin-right: 300px; 
+        }
+        .main-content.sidebar-active.with-right-sidebar {
+            margin-left: 300px;
+            margin-right: 300px;
+        }
+
+        .utility-sidebar {
+            width: 300px;
+            background: var(--glass-bg); 
+            backdrop-filter: blur(20px); 
+            overflow-y: auto;
+            position: fixed; 
+            height: calc(100vh - 52px);
+            right: 0; 
+            top: 52px;
+            z-index: 190;
+            border-left: 1px solid var(--glass-border);
+            transition: transform 0.3s ease-out;
+            border-top-left-radius: var(--border-radius-main);
+            transform: translateX(100%);
+        }
+        .utility-sidebar.active {
+            transform: translateX(0);
+        }
+
+        .utility-sidebar-header { padding: 1.8rem 1.5rem; position: relative; border-bottom: 1px solid var(--glass-border); }
+        .utility-sidebar-title { font-family: var(--chinese-title-font); margin: 0; color: var(--text-light); }
+        .utility-sidebar-content { padding: 1rem; }
+        .utility-item { padding: 0.8rem 1rem; margin: 0.3rem 0; background: rgba(255, 255, 255, 0.05); border-radius: var(--border-radius-small); cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.8rem; color: var(--text-light); }
+        .utility-item:hover { background: rgba(255, 255, 255, 0.15); transform: translateX(5px); }
+        .utility-item-icon { font-size: 1.2rem; width: 1.5rem; text-align: center; }
+        #favoritesListContainerEl .favorite-item { padding: 0.6rem 0.8rem; margin-bottom: 0.3rem; background: rgba(255,255,255,0.08); border-radius: var(--border-radius-small); font-size:0.9em; cursor:pointer; transition: background 0.2s;}
+        #favoritesListContainerEl .favorite-item:hover { background: rgba(255,255,255,0.15); }
+
+        .container { max-width: 1300px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 2.5rem; color: white; }
+        .header h1 { font-family: var(--chinese-title-font); font-size: 2.8rem; }
+        .header .tibetan-subtitle-header { font-family: var(--tibetan-title-font); font-size: 1.6rem; margin-top: -0.5rem; }
+        .header p:not(.tibetan-subtitle-header) { font-family: var(--english-font); }
+        .search-section { max-width: 650px; margin: 0 auto 2.5rem; }
+        .search-container { position: relative; border-radius: var(--border-radius-small); }
+        .search-input { width: 100%; padding: 0.8rem 1rem 0.8rem 3rem; font-size: 1rem; background: rgba(255, 255, 255, 0.1); border: 1px solid var(--glass-border); border-radius: var(--border-radius-small); color: var(--text-light); font-family: var(--english-font);}
+        .search-input::placeholder { color: rgba(255, 255, 255, 0.6); }
+        .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); font-size: 1.1rem; color: rgba(255, 255, 255, 0.6); }
+        .stats-bar { background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); border: 1px solid var(--glass-border); border-radius: var(--border-radius-main); padding: 1rem 1.5rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .view-controls { display: flex; gap: 0.5rem; }
+        .view-btn { padding: 0.6rem 1rem; font-size: 0.85rem; border-radius: var(--border-radius-small); border: 1px solid var(--glass-border); background: transparent; color: var(--text-light); cursor: pointer; transition: all 0.2s; }
+        .view-btn:hover, .view-btn.active { background: rgba(255, 255, 255, 0.2); color: white; }
+
+        .documents-grid {
+            background: transparent;
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem; 
+            margin-bottom: 2rem;
+        }
+
+        .document-card {
+            background: transparent;
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-main); 
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.824); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .document-title { 
+            font-size: 1.3rem; 
+            font-family: var(--tibetan-title-font);
+            margin-bottom: 0.5rem;
+        }
+        .document-subtitle { 
+            font-size: 1.1rem; 
+            font-family: var(--chinese-title-font);
+            margin-bottom: 0.5rem;
+            color: var(--text-accent);
+        }
+        .document-meta { 
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            font-family: var(--english-font);
+        }
+        .document-preview { 
+            font-size: 0.9rem; 
+            padding: 0.8rem; 
+            border-radius: var(--border-radius-small);
+            background: rgba(0, 0, 0, 0.2);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            line-height: 1.5;
+            flex-grow: 1; 
+            max-height: 100px; 
+            overflow: hidden;
+            font-family: var(--chinese-content-font);
+        }
+        .document-card-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-top: auto; 
+        }
+        .like-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.3rem;
+            margin-left: auto;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .like-btn:hover {
+            transform: scale(1.1);
+        }
+        .like-btn.liked {
+            color: var(--text-like);
+        }
+
+        .btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; border-radius: var(--border-radius-small); justify-content: center; text-align: center; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.1); color: var(--text-light); cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; }
+        .btn:hover { background: rgba(255, 255, 255, 0.2); color: white; }
+
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; justify-content: center; align-items: center;}
+        .modal.active { display: flex; }
+        .modal-content { background-image: url('images/modal_bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-blend-mode: overlay; background-color: rgba(20, 20, 30, 0.6); color: white;
+    backdrop-filter: blur(20px); backdrop-filter: blur(5px); border: 1px solid var(--glass-border); border-radius: var(--border-radius-main); padding: 2rem; max-width: 90vw; max-height: 90vh; overflow-y: auto; position: relative; display: flex; flex-direction: column; }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--text-light); font-size: 1.5rem; cursor: pointer; z-index: 10; }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+        .image-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-small);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        footer { text-align: center; padding: 2rem; background: rgba(0, 0, 0, 0.2); color: var(--text-light); font-size: 0.9rem; }
+        .social-links { margin-bottom: 1rem; }
+        .social-links a { color: var(--text-light); text-decoration: none; margin: 0 1rem; padding: 0.5rem; border-radius: var(--border-radius-small); transition: background 0.2s; }
+        .social-links a:hover { background: rgba(255, 255, 255, 0.1); }
+
+        .language-switcher-modal { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--glass-border); display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .language-switcher-modal button { padding: 0.5rem 1rem; font-size: 0.9rem; border-radius: var(--border-radius-small); border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.1); color: var(--text-light); cursor: pointer; font-family: var(--english-font); }
+        .language-switcher-modal button:hover { background: rgba(255, 255, 255, 0.2); }
+        .language-switcher-modal button.active { background: var(--text-accent); color: #333; font-weight: bold; border-color: var(--text-accent); }
+
+        #modalHeaderContent { margin-bottom: 1rem; }
+        .modal-document-title-zh { font-family: var(--chinese-title-font); margin-bottom: 0.2rem; font-size: 1.8rem; }
+        .modal-document-title-bo { font-family: var(--tibetan-title-font); margin-bottom: 0.2rem; opacity: 0.9; font-size: 1.4rem;}
+        .modal-document-title-en { font-style: italic; margin-bottom: 0.5rem; opacity: 0.8; font-size: 1rem; font-family: var(--english-font); }
+        
+        .language-content-container { line-height: 1.8; font-size: 1rem; flex-grow: 1; overflow-y: auto; min-height: 100px; }
+        .language-content { margin-bottom: 1.5rem; }
+        .language-content h4 { font-family: var(--chinese-title-font); margin-bottom: 0.5rem; color: var(--text-accent); font-size: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.3rem; }
+        .tibetan-text, .tibetan-text p { font-family: 'Noto Sans Tibetan', serif; }
+        .chinese-text, .chinese-text p { font-family: var(--chinese-content-font); }
+        .english-text, .english-text p { font-family: var(--english-font); }
+        
+        #modalLanguageSeparator, #modalLanguageSeparator2 { border: 0; height: 1px; background: var(--glass-border); margin: 1.5rem 0; }
+        #modalMetaContent { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--glass-border); font-size: 0.9em; opacity: 0.8; flex-shrink: 0; font-family: var(--english-font); }
+
+        @media (max-width: 768px) {
+            body { padding-top: 48px; }
+            .top-nav { height: auto; padding: 6px 10px; flex-wrap: wrap; justify-content: center; }
+            .nav-left { gap: 5px; margin-bottom: 5px; width: auto; justify-content: flex-start; order:1; flex-grow: 1;}
+            #toggleSidebarBtn { order: -1; margin-right: auto;}
+            .nav-right { width: auto; justify-content: flex-end; order:2; flex-grow: 1; }
+            .nav-item, .top-nav-btn { font-size: 13px; padding: 5px 8px; }
+
+            .sidebar { width: 260px; height: calc(100vh - 48px); top: 48px; }
+            .main-content.sidebar-active { margin-left: 260px; }
+            
+            .utility-sidebar { width: 260px; height: calc(100vh - 48px); top: 48px; }
+            .main-content.with-right-sidebar { margin-right: 260px; }
+            .main-content.sidebar-active.with-right-sidebar { margin-left: 260px; margin-right: 260px;}
+
+            .main-title { font-size: 2.2rem; white-space: normal; }
+            .mode-selector-content { padding: 2rem 1.5rem; }
+            .documents-grid { grid-template-columns: 1fr; }
+            .modal-content { max-width: 95vw; max-height: 95vh; padding: 1.5rem; }
+            
+            .main-title { font-size: 2.5rem; } 
+            .tibetan-subtitle { font-size: 1.3rem; }
+            .english-subtitle { font-size: 0.9rem; }
+        }
+        
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+       /* --- 音訊播放器樣式 --- */
+.top-nav audio {
+    height: 35px;
+    vertical-align: middle;
+    margin-right: 10px;
+    background: rgba(0, 0, 0, 0.5); /* 深色背景 */
+    border-radius: 20px;
+    padding: 2px;
+}
+
+/* 為所有瀏覽器設置深色主題 */
+audio::-webkit-media-controls-panel {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border-radius: 20px;
+}
+
+/* 調整播放按鈕和其他控制項的顏色 */
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button,
+audio::-webkit-media-controls-volume-slider,
+audio::-webkit-media-controls-timeline {
+    filter: invert(1) !important; /* 反轉顏色 */
+    opacity: 0.9;
+}
+
+/* 時間顯示文字 */
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    color: white !important;
+    text-shadow: 0 0 2px rgba(0,0,0,0.8);
+}
+
+/* Firefox 瀏覽器支援 */
+audio {
+    filter: contrast(1.2) brightness(0.9);
+}
+
+/* 懸停效果 */
+audio:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+   @keyframes pulse {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.05); }
+    100% { transform: translateX(-50%) scale(1); }
+}  
+ @keyframes fadeOut {
+   to {
+      opacity: 0;
+      transform: translateX(-50%) translateY(20px);
+    }
+}
+    </style>
 </head>
-<body>
+    <script src="//code.tidio.co/6kry48g900uow7sgpf0pkzzhw4ttwk3v.js" async></script>
+    <body>
     <!-- Top Navigation Bar -->
          <div id="background-slider">
         <div class="bg-slide"></div>
@@ -419,942 +466,1011 @@ backdrop-filter: blur(20px); backdrop-filter: blur(5px); border: 1px solid var(-
             <a href="javascript:void(0)" class="nav-item" onclick="showInfo('參考資源')">參考資源</a>
         </div>
         <div class="nav-right">
+             <audio id="bgMusic" controls loop preload="auto" autoplay src="audio.mp3"></audio>
             <button class="top-nav-btn" onclick="showTools()">✆✉❀✿</button>
         </div>
     </nav>
-code
-Code
-<div id="modeSelectorScreen">
-    <div class="mode-selector-content">
-        <h1 class="main-title">才旺諾布全集</h1>
-        <p class="tibetan-subtitle">༄༅། །ཚེ་དབང་ནོར་བུའི་གསུང་འབུམ།</p>
-        <p class="english-subtitle">Tsewang Norbu's Collected Works</p>
-        <div class="mode-buttons">
-            <button class="mode-button" onclick="enterReadMode()">📖 進入閱覽</button>
+
+    <div id="modeSelectorScreen">
+        <div class="mode-selector-content">
+            <h1 class="main-title">才旺諾布全集</h1>
+            <p class="tibetan-subtitle">༄༅། །ཚེ་དབང་ནོར་བུའི་གསུང་འབུམ་ཀློག་སྟེགས།</p>
+            <p class="english-subtitle">Tsewang Norbu's Collected Works</p>
+            <div class="mode-buttons">
+                <button class="mode-button" onclick="enterReadMode()">📖 進入閱覽</button>
+            </div>
         </div>
     </div>
-</div>
 
-<div id="appContainer">
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h2 class="sidebar-title">目錄</h2>
-            <p class="sidebar-subtitle">དཀར་ཆག</p>
-        </div>
-        <nav class="course-menu" id="courseMenuContainer">
-            <div style="padding: 1rem; color: var(--text-light); opacity: 0.8;">載入中...</div>
-        </nav>
-    </aside>
+    <div id="appContainer">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title">目錄</h2>
+                <p class="sidebar-subtitle">དཀར་ཆག</p>
+            </div>
+            <nav class="course-menu" id="courseMenuContainer">
+                <div style="padding: 1rem; color: var(--text-light); opacity: 0.8;">載入中...</div>
+            </nav>
+        </aside>
 
-    <main class="main-content" id="mainContentArea">
-         <div class="container">
-            <header class="header">
-                <h1>才旺諾布全集</h1>
-                <p class="tibetan-subtitle-header">༄༅། །ཚེ་དབང་ནོར་བུའི་གསུང་འབུམ།</p>
-                <p>Tsewang Norbu's Collected Works</p>
-            </header>
-            <div class="search-section">
-                <div class="search-container">
-                    <span class="search-icon">⌕</span>
-                    <input type="text" class="search-input" placeholder="搜尋文獻標題、內容或作者..." id="searchInputEl">
+        <main class="main-content" id="mainContentArea">
+             <div class="container">
+                <header class="header">
+                    <h1>才旺諾布全集</h1>
+                    <p class="tibetan-subtitle-header">༄༅། །ཚེ་དབང་ནོར་བུའི་གསུང་འབུམ་ཀློག་སྟེགས།</p>
+                    <p>Tsewang Norbu's Collected Works</p>
+                </header>
+                <div class="search-section">
+                    <div class="search-container">
+                        <span class="search-icon">⌕</span>
+                        <input type="text" class="search-input" placeholder="搜尋文獻標題、內容或作者..." id="searchInputEl">
+                    </div>
+                </div>
+                <div class="stats-bar">
+                    <div class="view-controls">
+                        <button class="view-btn" id="listViewBtn">📋 清單檢視</button>
+                        <button class="view-btn active" id="gridViewBtn">📇 卡片檢視</button>
+                    </div>
+                    <div style="font-size: 0.9rem; opacity: 0.9;">總計 <strong id="totalCountEl">0</strong> 部文獻</div>
+                </div>
+                <div class="documents-grid" id="documentsGridEl">
                 </div>
             </div>
-            <div class="stats-bar">
-                <div class="view-controls">
-                    <button class="view-btn" id="listViewBtn">📋 清單檢視</button>
-                    <button class="view-btn active" id="gridViewBtn">📇 卡片檢視</button>
+        </main>
+
+        <aside class="utility-sidebar" id="utilitySidebarEl">
+            <div class="utility-sidebar-header">
+                <h3 class="utility-sidebar-title">✆✉❀✿</h3>
+                <button class="modal-close" onclick="toggleUtilitySidebar()">×</button>
+            </div>
+            <div class="utility-sidebar-content">
+                <div class="utility-item" onclick="showFavorites()">
+                    <span class="utility-item-icon">✿</span> 已收藏文章
                 </div>
-                <div style="font-size: 0.9rem; opacity: 0.9;">總計 <strong id="totalCountEl">0</strong> 部文獻</div>
+                <div id="favoritesListContainerEl" style="display:none; padding: 0.5rem 1rem;">
+                    <!-- Favorite items will be listed here -->
+                </div>
+                <div class="utility-item" onclick="showUtilityModal('donateModal', '護持贊助')">
+                    <span class="utility-item-icon">💰</span> 護持贊助
+                </div>
+                <div class="utility-item" onclick="contactSupport()">
+                    <span class="utility-item-icon">✆</span> 聯繫客服
+                </div>
             </div>
-            <div class="documents-grid" id="documentsGridEl">
-            </div>
-        </div>
-    </main>
-
-    <aside class="utility-sidebar" id="utilitySidebarEl">
-        <div class="utility-sidebar-header">
-            <h3 class="utility-sidebar-title">✆✉❀✿</h3>
-            <button class="modal-close" onclick="toggleUtilitySidebar()">×</button>
-        </div>
-        <div class="utility-sidebar-content">
-            <div class="utility-item" onclick="showFavorites()">
-                <span class="utility-item-icon">✿</span> 已收藏文章
-            </div>
-            <div id="favoritesListContainerEl" style="display:none; padding: 0.5rem 1rem;">
-                <!-- Favorite items will be listed here -->
-            </div>
-            <div class="utility-item" onclick="showUtilityModal('donateModal', '護持贊助')">
-                <span class="utility-item-icon">💰</span> 護持贊助
-            </div>
-            <div class="utility-item" onclick="contactSupport()">
-                <span class="utility-item-icon">✆</span> 聯繫客服
-            </div>
-        </div>
-    </aside>
-</div>
-
-<!-- Document Modal -->
-<div class="modal" id="documentModal">
-    <div class="modal-content" style="max-width: 800px;">
-        <button class="modal-close" onclick="closeModal('documentModal')">×</button>
-        <div id="modalHeaderContent">
-            <h2 class="modal-document-title-zh">載入中...</h2>
-            <p class="modal-document-title-bo"></p>
-            <p class="modal-document-title-en"></p>
-        </div>
-        <div class="language-switcher-modal" id="languageSwitcherModal"></div>
-        <div class="language-content-container">
-            <div id="modalTibetanContentEl" class="language-content tibetan-text" style="display:none;"></div>
-            <hr id="modalLanguageSeparator" style="display:none;">
-            <div id="modalChineseContentEl" class="language-content chinese-text" style="display:none;"></div>
-            <hr id="modalLanguageSeparator2" style="display:none;"> 
-            <div id="modalEnglishContentEl" class="language-content english-text" style="display:none;"></div>
-        </div>
-        <div id="modalMetaContent"></div>
+        </aside>
     </div>
-</div>
 
-<div id="messageArea" style="position: fixed; top: 70px; right: 20px; z-index: 3000;"></div>
-
-<footer>
-    <div class="social-links">
-        <a href="https://www.facebook.com/rigzinchenpoassociation/?locale=zh_TW" target="_blank" title="Facebook">ⓕ</a>
-        <a href="http://www.rigzin-chenpo.org/index2.html" target="_blank" title="Website">🏠︎</a>
+    <!-- Document Modal -->
+    <div class="modal" id="documentModal">
+        <div class="modal-content" style="max-width: 800px;">
+            <button class="modal-close" onclick="closeModal('documentModal')">×</button>
+            <div id="modalHeaderContent">
+                <h2 class="modal-document-title-zh">載入中...</h2>
+                <p class="modal-document-title-bo"></p>
+                <p class="modal-document-title-en"></p>
+            </div>
+            <div class="language-switcher-modal" id="languageSwitcherModal"></div>
+            <div class="language-content-container">
+                <div id="modalTibetanContentEl" class="language-content tibetan-text" style="display:none;"></div>
+                <hr id="modalLanguageSeparator" style="display:none;">
+                <div id="modalChineseContentEl" class="language-content chinese-text" style="display:none;"></div>
+                <hr id="modalLanguageSeparator2" style="display:none;"> 
+                <div id="modalEnglishContentEl" class="language-content english-text" style="display:none;"></div>
+            </div>
+            <div id="modalMetaContent"></div>
+        </div>
     </div>
-    <div class="copyright">噶陀仁珍千寶 © 2025 才旺諾布全集 All Rights Reserved</div>
-</footer>
 
-<script>
-    // --- Global Variables ---
-    let documentsData = [];
-    let fileManifest = null; 
-    let currentOpenDocId = null;
-    let isLeftSidebarActive = true;
-    let favorites = [];
-    let dataLoaded = false;
-    // --- 背景幻燈片變數 ---
-    const backgroundImages = [
-        'images/木拉寺遠景.jpg', // 您原本的背景
-        'images/木拉大德眾.jpg',      // 您的另一張背景圖
-        'images/木拉關房.jpg',
-        'images/金剛猛王母.jpg',
-        'images/佛學院大殿.jpg',
-       // 在這裡加入更多圖片路徑...
-    ];
-    let currentBgIndex = 0;
-    let bgSlides;
-    const slideInterval = 180000; // 每 180 秒換一次背景 (180000 毫秒)
-            // --- 背景幻燈片函數 ---
-    function changeBackground() {
-        // 決定哪一個 slide div 是目前可見的，哪一個是下一個
-        const activeSlide = bgSlides[currentBgIndex % 2];
-        const nextSlide = bgSlides[(currentBgIndex + 1) % 2];
+    <div id="messageArea" style="position: fixed; top: 70px; right: 20px; z-index: 3000;"></div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.facebook.com/rigzinchenpoassociation/?locale=zh_TW" target="_blank" title="Facebook">ⓕ</a>
+            <a href="http://www.rigzin-chenpo.org/index2.html" target="_blank" title="Website">🏠︎</a>
+        </div>
+        <div class="copyright">噶陀仁珍千寶 © 2025 才旺諾布全集 All Rights Reserved</div>
+    </footer>
+
+    <script>
+        // --- Global Variables ---
+        let documentsData = [];
+        let fileManifest = null; 
+        let currentOpenDocId = null;
+        let isLeftSidebarActive = true;
+        let favorites = [];
+        let dataLoaded = false;
+        // --- 背景幻燈片變數 ---
+        const backgroundImages = [
+            'images/木拉寺遠景.jpg', // 您原本的背景
+            'images/木拉大德眾.jpg',      // 您的另一張背景圖
+            'images/佛學院大殿.jpg',
+            'images/金剛瑜伽母洞.jpg',
+            'images/馬頭洞.jpg',
+            'images/金剛猛王母洞.jpg',
+            // 在這裡加入更多圖片路徑...
+        ];
+        let currentBgIndex = 0;
+        let bgSlides;
+        const slideInterval = 180000; // 每 180 秒換一次背景 (180000 毫秒)
+                // --- 背景幻燈片函數 ---
+        function changeBackground() {
+            // 決定哪一個 slide div 是目前可見的，哪一個是下一個
+            const activeSlide = bgSlides[currentBgIndex % 2];
+            const nextSlide = bgSlides[(currentBgIndex + 1) % 2];
+            
+            // 增加索引，準備下一次更換
+            currentBgIndex++;
+            
+            // 為下一個 slide 預先載入下一張圖片
+            nextSlide.style.backgroundImage = `url('${backgroundImages[currentBgIndex % backgroundImages.length]}')`;
+
+            // 交換可見度，觸發 CSS 的淡入淡出效果
+            activeSlide.classList.remove('visible');
+            nextSlide.classList.add('visible');
+        }
+
+        function initBackgroundSlider() {
+            bgSlides = document.querySelectorAll('.bg-slide');
+            if (bgSlides.length < 2) return; // 如果沒有 slide div 就不執行
+
+            // 設置初始的兩張圖片
+            bgSlides[0].style.backgroundImage = `url('${backgroundImages[0]}')`;
+            bgSlides[1].style.backgroundImage = `url('${backgroundImages[1 % backgroundImages.length]}')`;
+            bgSlides[0].classList.add('visible');
+
+            // 每隔一段時間呼叫 changeBackground 函數
+            setInterval(changeBackground, slideInterval);
+        }
         
-        // 增加索引，準備下一次更換
-        currentBgIndex++;
+        // --- Sidebar Toggle ---
+        function toggleLeftSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContentArea');
+            const toggleBtn = document.getElementById('toggleSidebarBtn');
+            isLeftSidebarActive = !isLeftSidebarActive;
+            if (isLeftSidebarActive) {
+                sidebar.classList.add('active');
+                mainContent.classList.add('sidebar-active');
+                toggleBtn.innerHTML = '✕';
+            } else {
+                sidebar.classList.remove('active');
+                mainContent.classList.remove('sidebar-active');
+                toggleBtn.innerHTML = '☰';
+            }
+        }
+
+// --- Mode Management ---
+function enterReadMode() { 
+    document.getElementById('modeSelectorScreen').style.display = 'none'; 
+    document.getElementById('appContainer').style.display = 'flex'; 
+    document.body.classList.add('app-active');
+    
+    // 播放背景音樂
+    const audio = document.querySelector('audio');
+    if (audio) {
+        // 確保不是靜音狀態
+        audio.muted = false;
+        // 設定音量（0.0 到 1.0，這裡設定為 50%）
+        audio.volume = 0.5;
         
-        // 為下一個 slide 預先載入下一張圖片
-        nextSlide.style.backgroundImage = `url('${backgroundImages[currentBgIndex % backgroundImages.length]}')`;
-
-        // 交換可見度，觸發 CSS 的淡入淡出效果
-        activeSlide.classList.remove('visible');
-        nextSlide.classList.add('visible');
-    }
-
-    function initBackgroundSlider() {
-        bgSlides = document.querySelectorAll('.bg-slide');
-        if (bgSlides.length < 2) return; // 如果沒有 slide div 就不執行
-
-        // 設置初始的兩張圖片
-        bgSlides[0].style.backgroundImage = `url('${backgroundImages[0]}')`;
-        bgSlides[1].style.backgroundImage = `url('${backgroundImages[1 % backgroundImages.length]}')`;
-        bgSlides[0].classList.add('visible');
-
-        // 每隔一段時間呼叫 changeBackground 函數
-        setInterval(changeBackground, slideInterval);
+        // 嘗試播放
+        audio.play().then(() => {
+            console.log('音樂播放成功');
+        }).catch(e => {
+            console.log('音樂播放失敗:', e);
+            // 如果自動播放失敗，顯示提示
+            showMusicPrompt();
+        });
     }
     
-    // --- Sidebar Toggle ---
-    function toggleLeftSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('mainContentArea');
-        const toggleBtn = document.getElementById('toggleSidebarBtn');
-        isLeftSidebarActive = !isLeftSidebarActive;
-        if (isLeftSidebarActive) {
-            sidebar.classList.add('active');
-            mainContent.classList.add('sidebar-active');
-            toggleBtn.innerHTML = '✕';
-        } else {
-            sidebar.classList.remove('active');
-            mainContent.classList.remove('sidebar-active');
-            toggleBtn.innerHTML = '☰';
+    loadContent();
+}
+
+// 顯示音樂播放提示
+function showMusicPrompt() {
+    // 檢查是否已經有提示
+    if (document.getElementById('musicPrompt')) return;
+    
+    const prompt = document.createElement('div');
+    prompt.id = 'musicPrompt';
+    prompt.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 15px 30px;
+        border-radius: 25px;
+        cursor: pointer;
+        z-index: 9999;
+        animation: pulse 2s infinite;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        font-family: var(--chinese-content-font);
+    `;
+    prompt.innerHTML = '🎵 點擊此處播放背景音樂';
+    
+    prompt.onclick = function() {
+        const audio = document.querySelector('audio');
+        if (audio) {
+            audio.muted = false;
+            audio.volume = 0.5;
+            audio.play();
+            prompt.remove();
         }
-    }
+    };
+    
+    document.body.appendChild(prompt);
+    
+    // 5秒後自動消失
+    setTimeout(() => {
+        if (document.getElementById('musicPrompt')) {
+            prompt.style.animation = 'fadeOut 0.5s forwards';
+            setTimeout(() => prompt.remove(), 500);
+        }
+    }, 5000);
+}
+        function showModeSelectorScreen() {
+            document.getElementById('modeSelectorScreen').style.display = 'flex'; 
+            document.getElementById('appContainer').style.display = 'none'; 
+            document.body.classList.remove('app-active');
+            if (document.getElementById('sidebar').classList.contains('active') && isLeftSidebarActive) toggleLeftSidebar();
+            if (document.getElementById('utilitySidebarEl').classList.contains('active')) toggleUtilitySidebar();
+        }
 
-    // --- Mode Management ---
-    function enterReadMode() { 
-        document.getElementById('modeSelectorScreen').style.display = 'none'; 
-        document.getElementById('appContainer').style.display = 'flex'; 
-        document.body.classList.add('app-active');
-        loadContent();
-    }
+        // --- Modal Functions ---
+        function showModal(modalId) { 
+            const modal = document.getElementById(modalId); 
+            if (modal) modal.classList.add('active');
+        }
 
-    function showModeSelectorScreen() {
-        document.getElementById('modeSelectorScreen').style.display = 'flex'; 
-        document.getElementById('appContainer').style.display = 'none'; 
-        document.body.classList.remove('app-active');
-        if (document.getElementById('sidebar').classList.contains('active') && isLeftSidebarActive) toggleLeftSidebar();
-        if (document.getElementById('utilitySidebarEl').classList.contains('active')) toggleUtilitySidebar();
-    }
+        function closeModal(modalId) { 
+            const modal = document.getElementById(modalId); 
+            if (modal) modal.classList.remove('active'); 
+            if (modalId === 'documentModal') currentOpenDocId = null; 
+        }
 
-    // --- Modal Functions ---
-    function showModal(modalId) { 
-        const modal = document.getElementById(modalId); 
-        if (modal) modal.classList.add('active');
-    }
-
-    function closeModal(modalId) { 
-        const modal = document.getElementById(modalId); 
-        if (modal) modal.classList.remove('active'); 
-        if (modalId === 'documentModal') currentOpenDocId = null; 
-    }
-
-    // --- Data Management with Deduplication ---
-    async function loadDocumentsData() {
-        console.log("Loading documents based on manifest...");
-        try {
-            // 步驟 1: 載入或產生檔案清單
-            if (!fileManifest) {
-                updateLoadingProgress("正在讀取檔案清單...");
-                const manifestResponse = await fetch('./data/file_manifest.json?v=' + new Date().getTime());
-                if (manifestResponse.ok) {
-                    fileManifest = await manifestResponse.json();
-                    console.log("✓ Manifest loaded from file:", fileManifest);
-                } else {
-                    console.warn("Manifest file not found. Generating a fallback manifest at runtime.");
-                    updateLoadingProgress("找不到清單檔案，正在動態產生...");
-                    const documentFiles = await getDataFileList();
-                    fileManifest = {
-                        documents: documentFiles,
-                        images: {
-                            manuscripts: [],
-                            rigzintsewangnorbu: [],
-                            others: []
-                        }
-                    };
-                    console.log("✓ Fallback manifest generated:", fileManifest);
+        // --- Data Management with Deduplication ---
+        async function loadDocumentsData() {
+            console.log("Loading documents based on manifest...");
+            try {
+                // 步驟 1: 載入或產生檔案清單
+                if (!fileManifest) {
+                    updateLoadingProgress("正在讀取檔案清單...");
+                    const manifestResponse = await fetch('./data/file_manifest.json?v=' + new Date().getTime());
+                    if (manifestResponse.ok) {
+                        fileManifest = await manifestResponse.json();
+                        console.log("✓ Manifest loaded from file:", fileManifest);
+                    } else {
+                        console.warn("Manifest file not found. Generating a fallback manifest at runtime.");
+                        updateLoadingProgress("找不到清單檔案，正在動態產生...");
+                        const documentFiles = await getDataFileList();
+                        fileManifest = {
+                            documents: documentFiles,
+                            images: {
+                                manuscripts: [],
+                                rigzintsewangnorbu: [],
+                                others: []
+                            }
+                        };
+                        console.log("✓ Fallback manifest generated:", fileManifest);
+                    }
                 }
-            }
 
-            // 步驟 2: 根據清單載入文獻
-            const documentFiles = fileManifest.documents || [];
-            if (documentFiles.length === 0) {
-                console.warn("Manifest contains no documents. Using fallback data.");
+                // 步驟 2: 根據清單載入文獻
+                const documentFiles = fileManifest.documents || [];
+                if (documentFiles.length === 0) {
+                    console.warn("Manifest contains no documents. Using fallback data.");
+                    await loadFallbackData();
+                    return true;
+                }
+
+                updateLoadingProgress(`載入 ${documentFiles.length} 篇文獻...`);
+                const allDocuments = [];
+                for (let i = 0; i < documentFiles.length; i++) {
+                    const fileName = documentFiles[i];
+                    updateLoadingProgress(`載入中 (${i + 1}/${documentFiles.length}): ${fileName}`);
+                    try {
+                        const response = await fetch(`./data/${fileName}`);
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (Array.isArray(data)) {
+                                allDocuments.push(...data);
+                            } else if (data && typeof data === 'object') {
+                                if (!data.id) {
+                                    data.id = fileName.replace('.json', '') + '_' + Date.now();
+                                }
+                                allDocuments.push(data);
+                            }
+                        }
+                    } catch (fileError) {
+                        console.warn(`Error loading ${fileName}:`, fileError);
+                    }
+                }
+
+                // 步驟 3: 去重與處理
+                updateLoadingProgress("正在去除重複文獻...");
+                documentsData = deduplicateDocuments(allDocuments);
+                console.log(`📉 去重結果: ${allDocuments.length} → ${documentsData.length} 篇文獻`);
+                
+                updateLoadingProgress("正在處理文獻資料...");
+                documentsData.forEach((doc, index) => {
+                    if (!doc.id) doc.id = `doc_${Date.now()}_${index}`;
+                    if (!doc.category) doc.category = '未分類';
+                    if (!doc.author) doc.author = '才旺諾布';
+                    if (!doc.availableLanguages) {
+                        doc.availableLanguages = [];
+                        if (doc.ContentTibetan && doc.ContentTibetan.trim()) doc.availableLanguages.push('bo');
+                        if (doc.ContentChinese && doc.ContentChinese.trim()) doc.availableLanguages.push('zh');
+                        if (doc.ContentEnglish && doc.ContentEnglish.trim()) doc.availableLanguages.push('en');
+                    }
+                });
+                
+                updateLoadingProgress("正在生成摘要資訊...");
+                processAllDocumentMeta();
+                dataLoaded = true;
+                
+                showMessage(`✓ 成功載入 ${documentsData.length} 篇文獻`, 'success');
+                return true;
+
+            } catch (error) {
+                console.error("Failed to load documents:", error);
+                showMessage('錯誤: ' + error.message, 'error');
                 await loadFallbackData();
                 return true;
             }
-
-            updateLoadingProgress(`載入 ${documentFiles.length} 篇文獻...`);
-            const allDocuments = [];
-            for (let i = 0; i < documentFiles.length; i++) {
-                const fileName = documentFiles[i];
-                updateLoadingProgress(`載入中 (${i + 1}/${documentFiles.length}): ${fileName}`);
-                try {
-                    const response = await fetch(`./data/${fileName}`);
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (Array.isArray(data)) {
-                            allDocuments.push(...data);
-                        } else if (data && typeof data === 'object') {
-                            if (!data.id) {
-                                data.id = fileName.replace('.json', '') + '_' + Date.now();
-                            }
-                            allDocuments.push(data);
-                        }
-                    }
-                } catch (fileError) {
-                    console.warn(`Error loading ${fileName}:`, fileError);
-                }
-            }
-
-            // 步驟 3: 去重與處理
-            updateLoadingProgress("正在去除重複文獻...");
-            documentsData = deduplicateDocuments(allDocuments);
-            console.log(`📉 去重結果: ${allDocuments.length} → ${documentsData.length} 篇文獻`);
+        }
+        // 去重函數
+        function deduplicateDocuments(documents) {
+            const uniqueMap = new Map();
             
-            updateLoadingProgress("正在處理文獻資料...");
-            documentsData.forEach((doc, index) => {
-                if (!doc.id) doc.id = `doc_${Date.now()}_${index}`;
-                if (!doc.category) doc.category = '未分類';
-                if (!doc.author) doc.author = '才旺諾布';
-                if (!doc.availableLanguages) {
-                    doc.availableLanguages = [];
-                    if (doc.ContentTibetan && doc.ContentTibetan.trim()) doc.availableLanguages.push('bo');
-                    if (doc.ContentChinese && doc.ContentChinese.trim()) doc.availableLanguages.push('zh');
-                    if (doc.ContentEnglish && doc.ContentEnglish.trim()) doc.availableLanguages.push('en');
+            documents.forEach(doc => {
+                // 創建一個唯一鍵來識別文獻
+                const titleKey = `${doc.chineseTitle || ''}_${doc.tibetanTitle || ''}`.trim();
+                const contentKey = (doc.ContentChinese || doc.ContentTibetan || doc.ContentEnglish || '').substring(0, 200);
+                const uniqueKey = `${titleKey}_${contentKey}`;
+                
+                // 如果該鍵已存在，檢查哪個版本更完整
+                if (uniqueMap.has(uniqueKey)) {
+                    const existingDoc = uniqueMap.get(uniqueKey);
+                    const existingCompleteness = getDocumentCompleteness(existingDoc);
+                    const newCompleteness = getDocumentCompleteness(doc);
+                    
+                    // 如果新文檔更完整，則替換
+                    if (newCompleteness > existingCompleteness) {
+                        if (existingDoc.id && !doc.id) {
+                            doc.id = existingDoc.id;
+                        }
+                        uniqueMap.set(uniqueKey, doc);
+                        console.log(`🔄 替換文獻: ${doc.chineseTitle || doc.tibetanTitle}`);
+                    }
+                } else {
+                    uniqueMap.set(uniqueKey, doc);
                 }
             });
             
-            updateLoadingProgress("正在生成摘要資訊...");
+            return Array.from(uniqueMap.values());
+        }
+
+        // 計算文檔完整性分數
+        function getDocumentCompleteness(doc) {
+            let score = 0;
+            if (doc.id) score += 1;
+            if (doc.chineseTitle) score += 2;
+            if (doc.tibetanTitle) score += 2;
+            if (doc.englishTitle) score += 1;
+            if (doc.author) score += 1;
+            if (doc.category && doc.category !== '未分類') score += 1;
+            if (doc.tags && doc.tags.length > 0) score += 1;
+            if (doc.ContentTibetan) score += 3;
+            if (doc.ContentChinese) score += 3;
+            if (doc.ContentEnglish) score += 2;
+            // 內容長度也計入分數
+            score += Math.min(10, (doc.ContentChinese || '').length / 100);
+            score += Math.min(10, (doc.ContentTibetan || '').length / 100);
+            return score;
+        }
+
+        // 獲取資料檔案列表
+        async function getDataFileList() {
+            const possibleFiles = [
+                '上師瑜伽.json', '大圓滿.json', '天相算命.json', '自傳.json', '導引文.json',
+                '念誦文.json', '長壽祈請文.json', '信箋.json', '度母.json', '歷史.json',
+                '祈請文.json', '祈願.json', '祈願任運.json', '密慧佛母.json','道歌.json',
+                '梵文.json', '傳紀.json', '勝樂註解.json', '普巴金剛.json', 
+                '圓滿次第.json', '解疑.json', '灌頂.json', '儀軌法行.json', '觀音.json',
+            ];
+            
+            const existingFiles = [];
+            for (const fileName of possibleFiles) {
+                try {
+                    const response = await fetch(`./data/${fileName}`, { method: 'HEAD' });
+                    if (response.ok) {
+                        existingFiles.push(fileName);
+                    }
+                } catch (error) {
+                    // 檔案不存在，忽略
+                }
+            }
+            
+            return existingFiles;
+        }
+
+        // 載入備用示例資料
+        async function loadFallbackData() {
+            console.log("Loading fallback demo data...");
+            updateLoadingProgress("載入示例資料...");
+            
+            documentsData = [
+                {
+                    "id": "demo001",
+                    "tibetanTitle": "ཆོས་ཀྱི་འཁོར་ལོ་དང་པོ།",
+                    "chineseTitle": "初轉法輪",
+                    "englishTitle": "First Turning of the Dharma Wheel",
+                    "author": "才旺諾布",
+                    "category": "法要開示",
+                    "tags": ["佛法", "開示", "法輪"],
+                    "availableLanguages": ["bo", "zh", "en"],
+                    "ContentTibetan": "<p>ཆོས་ཀྱི་འཁོར་ལོ་དང་པོ་བསྐོར་བ་ནི་སངས་རྒྱས་ཀྱིས་རི་དྭགས་ཀྱི་ནགས་ཚལ་དུ་དགེ་སློང་ལྔ་ལ་བདེན་པ་བཞིའི་ཆོས་བསྟན་པ་ཡིན།</p>",
+                    "ContentChinese": "<p>初轉法輪是佛陀在鹿野苑對五比丘所說的四聖諦法門，標誌著佛法教學的正式開始。</p>",
+                    "ContentEnglish": "<p>The First Turning of the Dharma Wheel refers to Buddha's first teaching.</p>"
+                }
+            ];
+            
             processAllDocumentMeta();
             dataLoaded = true;
-            
-            showMessage(`✓ 成功載入 ${documentsData.length} 篇文獻`, 'success');
-            return true;
-
-        } catch (error) {
-            console.error("Failed to load documents:", error);
-            showMessage('錯誤: ' + error.message, 'error');
-            await loadFallbackData();
-            return true;
+            showMessage(`載入示例資料，共 ${documentsData.length} 篇文獻`, 'info');
         }
-    }
-    // 去重函數
-    function deduplicateDocuments(documents) {
-        const uniqueMap = new Map();
-        
-        documents.forEach(doc => {
-            // 創建一個唯一鍵來識別文獻
-            const titleKey = `${doc.chineseTitle || ''}_${doc.tibetanTitle || ''}`.trim();
-            const contentKey = (doc.ContentChinese || doc.ContentTibetan || doc.ContentEnglish || '').substring(0, 200);
-            const uniqueKey = `${titleKey}_${contentKey}`;
-            
-            // 如果該鍵已存在，檢查哪個版本更完整
-            if (uniqueMap.has(uniqueKey)) {
-                const existingDoc = uniqueMap.get(uniqueKey);
-                const existingCompleteness = getDocumentCompleteness(existingDoc);
-                const newCompleteness = getDocumentCompleteness(doc);
+
+        async function loadContent() {
+            if (!dataLoaded) {
+                document.getElementById('documentsGridEl').innerHTML = `
+                    <div style="text-align:center;padding:2rem;color:var(--text-light);opacity:0.8;">
+                        <div style="margin-bottom:1rem;">🔄 正在掃描並載入文獻檔案...</div>
+                        <div id="loadingProgress" style="font-size:0.9rem;opacity:0.7;"></div>
+                    </div>`;
+                document.getElementById('totalCountEl').textContent = '載入中';
                 
-                // 如果新文檔更完整，則替換
-                if (newCompleteness > existingCompleteness) {
-                    if (existingDoc.id && !doc.id) {
-                        doc.id = existingDoc.id;
-                    }
-                    uniqueMap.set(uniqueKey, doc);
-                    console.log(`🔄 替換文獻: ${doc.chineseTitle || doc.tibetanTitle}`);
+                const success = await loadDocumentsData();
+                if (success) {
+                    renderSidebar();
+                    renderDocuments();
+                } else {
+                    document.getElementById('documentsGridEl').innerHTML = `<div style="text-align:center;padding:2rem;color:var(--text-light);opacity:0.8;">無法載入文獻資料，請檢查網路連線或稍後再試。</div>`;
+                    document.getElementById('totalCountEl').textContent = '0';
                 }
             } else {
-                uniqueMap.set(uniqueKey, doc);
-            }
-        });
-        
-        return Array.from(uniqueMap.values());
-    }
-
-    // 計算文檔完整性分數
-    function getDocumentCompleteness(doc) {
-        let score = 0;
-        if (doc.id) score += 1;
-        if (doc.chineseTitle) score += 2;
-        if (doc.tibetanTitle) score += 2;
-        if (doc.englishTitle) score += 1;
-        if (doc.author) score += 1;
-        if (doc.category && doc.category !== '未分類') score += 1;
-        if (doc.tags && doc.tags.length > 0) score += 1;
-        if (doc.ContentTibetan) score += 3;
-        if (doc.ContentChinese) score += 3;
-        if (doc.ContentEnglish) score += 2;
-        // 內容長度也計入分數
-        score += Math.min(10, (doc.ContentChinese || '').length / 100);
-        score += Math.min(10, (doc.ContentTibetan || '').length / 100);
-        return score;
-    }
-
-    // 獲取資料檔案列表
-    async function getDataFileList() {
-        const possibleFiles = [
-            '上師瑜伽.json', '大圓滿.json', '天相算命.json', '自傳.json', '導引文.json',
-            '念誦文.json', '長壽祈請文.json', '信箋.json', '度母.json', '歷史.json',
-            '祈請文.json', '祈願.json', '祈願任運.json', '密慧佛母.json','道歌.json',
-            '梵文.json', '傳紀.json', '勝樂註解.json', '普巴金剛.json', 
-            '圓滿次第.json', '解疑.json', '灌頂.json', '儀軌法行.json', '觀音.json',
-        ];
-        
-        const existingFiles = [];
-        for (const fileName of possibleFiles) {
-            try {
-                const response = await fetch(`./data/${fileName}`, { method: 'HEAD' });
-                if (response.ok) {
-                    existingFiles.push(fileName);
-                }
-            } catch (error) {
-                // 檔案不存在，忽略
-            }
-        }
-        
-        return existingFiles;
-    }
-
-    // 載入備用示例資料
-    async function loadFallbackData() {
-        console.log("Loading fallback demo data...");
-        updateLoadingProgress("載入示例資料...");
-        
-        documentsData = [
-            {
-                "id": "demo001",
-                "tibetanTitle": "ཆོས་ཀྱི་འཁོར་ལོ་དང་པོ།",
-                "chineseTitle": "初轉法輪",
-                "englishTitle": "First Turning of the Dharma Wheel",
-                "author": "才旺諾布",
-                "category": "法要開示",
-                "tags": ["佛法", "開示", "法輪"],
-                "availableLanguages": ["bo", "zh", "en"],
-                "ContentTibetan": "<p>ཆོས་ཀྱི་འཁོར་ལོ་དང་པོ་བསྐོར་བ་ནི་སངས་རྒྱས་ཀྱིས་རི་དྭགས་ཀྱི་ནགས་ཚལ་དུ་དགེ་སློང་ལྔ་ལ་བདེན་པ་བཞིའི་ཆོས་བསྟན་པ་ཡིན།</p>",
-                "ContentChinese": "<p>初轉法輪是佛陀在鹿野苑對五比丘所說的法門，標誌著佛法教學的正式開始。</p>",
-                "ContentEnglish": "<p>The First Turning of the Dharma Wheel refers to Buddha's first teaching.</p>"
-            }
-        ];
-        
-        processAllDocumentMeta();
-        dataLoaded = true;
-        showMessage(`載入示例資料，共 ${documentsData.length} 篇文獻`, 'info');
-    }
-
-    async function loadContent() {
-        if (!dataLoaded) {
-            document.getElementById('documentsGridEl').innerHTML = `
-                <div style="text-align:center;padding:2rem;color:var(--text-light);opacity:0.8;">
-                    <div style="margin-bottom:1rem;">🔄 正在掃描並載入文獻檔案...</div>
-                    <div id="loadingProgress" style="font-size:0.9rem;opacity:0.7;"></div>
-                </div>`;
-            document.getElementById('totalCountEl').textContent = '載入中';
-            
-            const success = await loadDocumentsData();
-            if (success) {
+                console.log("Documents already loaded.");
                 renderSidebar();
                 renderDocuments();
-            } else {
-                document.getElementById('documentsGridEl').innerHTML = `<div style="text-align:center;padding:2rem;color:var(--text-light);opacity:0.8;">無法載入文獻資料，請檢查網路連線或稍後再試。</div>`;
-                document.getElementById('totalCountEl').textContent = '0';
             }
-        } else {
-            console.log("Documents already loaded.");
-            renderSidebar();
-            renderDocuments();
         }
-    }
 
-    function updateLoadingProgress(message) {
-        const progressEl = document.getElementById('loadingProgress');
-        if (progressEl) {
-            progressEl.textContent = message;
-        }
-    }
-
-    // ---[ START REPLACEMENT ]---
-    function processAllDocumentMeta() {
-        documentsData.forEach(doc => {
-            if (!doc.meta) doc.meta = {};
-            
-            // 移除 HTML 標籤並計算純文字
-            const plainTibetan = (doc.ContentTibetan || "").replace(/<[^>]+>/g, "").trim();
-            const plainChinese = (doc.ContentChinese || "").replace(/<[^>]+>/g, "").trim();
-            const plainEnglish = (doc.ContentEnglish || "").replace(/<[^>]+>/g, "").trim();
-            
-            // 計算各語言的字數
-            const tibetanSyllables = plainTibetan.split(/[་\s]+/).filter(s => s.trim().length > 0).length;
-            const chineseChars = plainChinese.replace(/[^\u4e00-\u9fa5]/g, "").length;
-            const englishWords = plainEnglish.split(/\s+/).filter(w => w.length > 0).length;
-            
-            // 格式化字數顯示
-            const wordCounts = [];
-            if (tibetanSyllables > 0) wordCounts.push(`藏 ${tibetanSyllables.toLocaleString()} 音節`);
-            if (chineseChars > 0) wordCounts.push(`中 ${chineseChars.toLocaleString()} 字`);
-            if (englishWords > 0) wordCounts.push(`英 ${englishWords.toLocaleString()} 詞`);
-            
-            doc.meta.words = wordCounts.join(' | ') || '無內容';
-            
-            // 計算閱讀時間（基於不同語言的閱讀速度）
-            const tibetanMinutes = tibetanSyllables / 150;  // 每分鐘 150 音節
-            const chineseMinutes = chineseChars / 250;      // 每分鐘 250 字
-            const englishMinutes = englishWords / 200;      // 每分鐘 200 詞
-            
-            const totalMinutes = Math.ceil(tibetanMinutes + chineseMinutes + englishMinutes);
-            
-            // 格式化閱讀時間
-            if (totalMinutes === 0) {
-                doc.meta.readTime = '少於 1 分鐘';
-            } else if (totalMinutes <= 60) {
-                doc.meta.readTime = `約 ${totalMinutes} 分鐘`;
-            } else {
-                const hours = Math.floor(totalMinutes / 60);
-                const minutes = totalMinutes % 60;
-                doc.meta.readTime = minutes > 0 ? `約 ${hours} 小時 ${minutes} 分鐘` : `約 ${hours} 小時`;
+        function updateLoadingProgress(message) {
+            const progressEl = document.getElementById('loadingProgress');
+            if (progressEl) {
+                progressEl.textContent = message;
             }
-            
-            // 計算頁數（假設每頁約 5 分鐘的閱讀量）
-            const pages = Math.ceil(totalMinutes / 5);
-            doc.meta.pages = pages > 0 ? `${pages} 頁` : '少於 1 頁';
-            
-            // 生成預覽（優先使用中文，其次藏文，最後英文）
-            const previewText = plainChinese || plainTibetan || plainEnglish || '';
-            doc.meta.preview = previewText.substring(0, 150) + (previewText.length > 150 ? '...' : '');
-            
-            // 計算總字數（用於排序或統計）
-            doc.meta.totalCharCount = plainTibetan.length + plainChinese.length + plainEnglish.length;
-        });
-    }
-    // ---[ END REPLACEMENT ]---
-
-    // --- Content Rendering ---
-    function renderSidebar() {
-        const sidebarEl = document.getElementById('courseMenuContainer');
-        if (!documentsData || documentsData.length === 0) { 
-            sidebarEl.innerHTML = '<div style="padding:1rem;color:var(--text-light);opacity:0.8;">暫無目錄</div>'; 
-            return; 
         }
-        const categories = {}; 
-        documentsData.forEach(doc => { 
-            const cat = doc.category || '未分類'; 
-            if (!categories[cat]) categories[cat] = []; 
-            categories[cat].push(doc); 
-        });
-        sidebarEl.innerHTML = Object.entries(categories).map(([category, docs]) => { 
-            const categoryId = `category-list-${category.replace(/[^a-zA-Z0-9\-_]/g, '')}`;
-            return `<div style="margin-bottom:1rem;"><h4 style="padding:0.8rem 1rem;background:rgba(255,255,255,0.1);margin:0;cursor:pointer;border-radius:var(--border-radius-small);" onclick="toggleCategory('${categoryId}')">${category} (${docs.length})</h4><div id="${categoryId}" style="padding-left:1rem;display:block;">${docs.map(doc => `<div style="padding:0.5rem 1rem;cursor:pointer;border-radius:var(--border-radius-small);margin:0.2rem 0;display:flex;justify-content:space-between;align-items:center;" onclick="openDocument('${doc.id}')" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'"><span style="flex-grow:1;">${doc.chineseTitle||doc.tibetanTitle||'無標題'}</span><span style="font-size:0.75em;opacity:0.6;margin-left:8px;white-space:nowrap;">[${doc.availableLanguages.join(',')}]</span></div>`).join('')}</div></div>`;
-        }).join('');
-    }
 
-    function toggleCategory(categoryId) { 
-        const catEl = document.getElementById(categoryId); 
-        if (catEl) catEl.style.display = catEl.style.display === 'none' ? 'block' : 'none'; 
-    }
-
-    function renderDocuments(docsToRender = documentsData) {
-        const gridEl = document.getElementById('documentsGridEl');
-        const totalEl = document.getElementById('totalCountEl');
-        if (!docsToRender || docsToRender.length === 0) {
-            gridEl.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--text-light);opacity:0.8;">暫無文獻資料</div>`; 
-            totalEl.textContent='0'; 
-            return;
+        // ---[ START REPLACEMENT ]---
+        function processAllDocumentMeta() {
+            documentsData.forEach(doc => {
+                if (!doc.meta) doc.meta = {};
+                
+                // 移除 HTML 標籤並計算純文字
+                const plainTibetan = (doc.ContentTibetan || "").replace(/<[^>]+>/g, "").trim();
+                const plainChinese = (doc.ContentChinese || "").replace(/<[^>]+>/g, "").trim();
+                const plainEnglish = (doc.ContentEnglish || "").replace(/<[^>]+>/g, "").trim();
+                
+                // 計算各語言的字數
+                const tibetanSyllables = plainTibetan.split(/[་\s]+/).filter(s => s.trim().length > 0).length;
+                const chineseChars = plainChinese.replace(/[^\u4e00-\u9fa5]/g, "").length;
+                const englishWords = plainEnglish.split(/\s+/).filter(w => w.length > 0).length;
+                
+                // 格式化字數顯示
+                const wordCounts = [];
+                if (tibetanSyllables > 0) wordCounts.push(`藏 ${tibetanSyllables.toLocaleString()} 音節`);
+                if (chineseChars > 0) wordCounts.push(`中 ${chineseChars.toLocaleString()} 字`);
+                if (englishWords > 0) wordCounts.push(`英 ${englishWords.toLocaleString()} 詞`);
+                
+                doc.meta.words = wordCounts.join(' | ') || '無內容';
+                
+                // 計算閱讀時間（基於不同語言的閱讀速度）
+                const tibetanMinutes = tibetanSyllables / 150;  // 每分鐘 150 音節
+                const chineseMinutes = chineseChars / 250;      // 每分鐘 250 字
+                const englishMinutes = englishWords / 200;      // 每分鐘 200 詞
+                
+                const totalMinutes = Math.ceil(tibetanMinutes + chineseMinutes + englishMinutes);
+                
+                // 格式化閱讀時間
+                if (totalMinutes === 0) {
+                    doc.meta.readTime = '少於 1 分鐘';
+                } else if (totalMinutes <= 60) {
+                    doc.meta.readTime = `約 ${totalMinutes} 分鐘`;
+                } else {
+                    const hours = Math.floor(totalMinutes / 60);
+                    const minutes = totalMinutes % 60;
+                    doc.meta.readTime = minutes > 0 ? `約 ${hours} 小時 ${minutes} 分鐘` : `約 ${hours} 小時`;
+                }
+                
+                // 計算頁數（假設每頁約 5 分鐘的閱讀量）
+                const pages = Math.ceil(totalMinutes / 5);
+                doc.meta.pages = pages > 0 ? `${pages} 頁` : '少於 1 頁';
+                
+                // 生成預覽（優先使用中文，其次藏文，最後英文）
+                const previewText = plainChinese || plainTibetan || plainEnglish || '';
+                doc.meta.preview = previewText.substring(0, 150) + (previewText.length > 150 ? '...' : '');
+                
+                // 計算總字數（用於排序或統計）
+                doc.meta.totalCharCount = plainTibetan.length + plainChinese.length + plainEnglish.length;
+            });
         }
-        totalEl.textContent = docsToRender.length;
-        gridEl.innerHTML = docsToRender.map(doc => `
-            <div class="document-card"> 
-                <h3 class="document-title">${doc.tibetanTitle || '無藏文標題'}</h3>
-                <h4 class="document-subtitle">${doc.chineseTitle || '無中文標題'}</h4>
-                <div class="document-meta">作者：${doc.author || '未知'} | 類別：${doc.category || '未分類'}</div>
-                <div class="document-preview">${doc.meta?.preview || (doc.ContentChinese || doc.ContentTibetan || '').substring(0, 100).replace(/<[^>]+>/g, '')}...</div>
-                <div class="document-card-actions">
-                    <a href="javascript:void(0)" class="btn" onclick="event.stopPropagation(); openDocument('${doc.id}');">閱讀全文</a>
-                    <button class="like-btn ${favorites.includes(doc.id) ? 'liked' : ''}" onclick="event.stopPropagation(); toggleFavorite('${doc.id}', this);" title="收藏">✿</button>
+        // ---[ END REPLACEMENT ]---
+
+        // --- Content Rendering ---
+        function renderSidebar() {
+            const sidebarEl = document.getElementById('courseMenuContainer');
+            if (!documentsData || documentsData.length === 0) { 
+                sidebarEl.innerHTML = '<div style="padding:1rem;color:var(--text-light);opacity:0.8;">暫無目錄</div>'; 
+                return; 
+            }
+            const categories = {}; 
+            documentsData.forEach(doc => { 
+                const cat = doc.category || '未分類'; 
+                if (!categories[cat]) categories[cat] = []; 
+                categories[cat].push(doc); 
+            });
+            sidebarEl.innerHTML = Object.entries(categories).map(([category, docs]) => { 
+                const categoryId = `category-list-${category.replace(/[^a-zA-Z0-9\-_]/g, '')}`;
+                return `<div style="margin-bottom:1rem;"><h4 style="padding:0.8rem 1rem;background:rgba(255,255,255,0.1);margin:0;cursor:pointer;border-radius:var(--border-radius-small);" onclick="toggleCategory('${categoryId}')">${category} (${docs.length})</h4><div id="${categoryId}" style="padding-left:1rem;display:block;">${docs.map(doc => `<div style="padding:0.5rem 1rem;cursor:pointer;border-radius:var(--border-radius-small);margin:0.2rem 0;display:flex;justify-content:space-between;align-items:center;" onclick="openDocument('${doc.id}')" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'"><span style="flex-grow:1;">${doc.chineseTitle||doc.tibetanTitle||'無標題'}</span><span style="font-size:0.75em;opacity:0.6;margin-left:8px;white-space:nowrap;">[${doc.availableLanguages.join(',')}]</span></div>`).join('')}</div></div>`;
+            }).join('');
+        }
+
+        function toggleCategory(categoryId) { 
+            const catEl = document.getElementById(categoryId); 
+            if (catEl) catEl.style.display = catEl.style.display === 'none' ? 'block' : 'none'; 
+        }
+
+        function renderDocuments(docsToRender = documentsData) {
+            const gridEl = document.getElementById('documentsGridEl');
+            const totalEl = document.getElementById('totalCountEl');
+            if (!docsToRender || docsToRender.length === 0) {
+                gridEl.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--text-light);opacity:0.8;">暫無文獻資料</div>`; 
+                totalEl.textContent='0'; 
+                return;
+            }
+            totalEl.textContent = docsToRender.length;
+            gridEl.innerHTML = docsToRender.map(doc => `
+                <div class="document-card"> 
+                    <h3 class="document-title">${doc.tibetanTitle || '無藏文標題'}</h3>
+                    <h4 class="document-subtitle">${doc.chineseTitle || '無中文標題'}</h4>
+                    <div class="document-meta">作者：${doc.author || '未知'} | 類別：${doc.category || '未分類'}</div>
+                    <div class="document-preview">${doc.meta?.preview || (doc.ContentChinese || doc.ContentTibetan || '').substring(0, 100).replace(/<[^>]+>/g, '')}...</div>
+                    <div class="document-card-actions">
+                        <a href="javascript:void(0)" class="btn" onclick="event.stopPropagation(); openDocument('${doc.id}');">閱讀全文</a>
+                        <button class="like-btn ${favorites.includes(doc.id) ? 'liked' : ''}" onclick="event.stopPropagation(); toggleFavorite('${doc.id}', this);" title="收藏">✿</button>
+                    </div>
                 </div>
-            </div>
-        `).join('');
-    }
+            `).join('');
+        }
 
-    // --- Document Modal ---
-    function updateLanguageSwitcher(availableLangs, docId) {
-        const switcherEl = document.getElementById('languageSwitcherModal'); 
-        switcherEl.innerHTML = '';
-        const langMap = { bo: '藏文', zh: '中文', en: 'English' };
-        const hasContent = (lang) => { 
+        // --- Document Modal ---
+        function updateLanguageSwitcher(availableLangs, docId) {
+            const switcherEl = document.getElementById('languageSwitcherModal'); 
+            switcherEl.innerHTML = '';
+            const langMap = { bo: '藏文', zh: '中文', en: 'English' };
+            const hasContent = (lang) => { 
+                const doc = documentsData.find(d => d.id === docId); 
+                if (!doc) return false; 
+                if (lang === 'bo') return doc.ContentTibetan && doc.ContentTibetan.replace(/<[^>]+>|\s+/g, '') !== ''; 
+                if (lang === 'zh') return doc.ContentChinese && doc.ContentChinese.replace(/<[^>]+>|\s+/g, '') !== ''; 
+                if (lang === 'en') return doc.ContentEnglish && doc.ContentEnglish.replace(/<[^>]+>|\s+/g, '') !== ''; 
+                return false; 
+            };
+            availableLangs.forEach(lang => { 
+                if (langMap[lang] && hasContent(lang)) { 
+                    const btn = document.createElement('button'); 
+                    btn.textContent = langMap[lang]; 
+                    btn.onclick = () => showLanguage(docId, lang); 
+                    btn.dataset.langCode = lang; 
+                    switcherEl.appendChild(btn); 
+                }
+            });
+            if (availableLangs.includes('bo')&&availableLangs.includes('zh')&&hasContent('bo')&&hasContent('zh')){ 
+                const btn=document.createElement('button');
+                btn.textContent='藏中對照';
+                btn.onclick=()=>showLanguage(docId,'bo-zh');
+                btn.dataset.langCode='bo-zh';
+                switcherEl.appendChild(btn);
+            }
+            if (availableLangs.includes('bo')&&availableLangs.includes('en')&&hasContent('bo')&&hasContent('en')){ 
+                const btn=document.createElement('button');
+                btn.textContent='藏英對照';
+                btn.onclick=()=>showLanguage(docId,'bo-en');
+                btn.dataset.langCode='bo-en';
+                switcherEl.appendChild(btn);
+            }
+            if (availableLangs.includes('zh')&&availableLangs.includes('en')&&hasContent('zh')&&hasContent('en')){ 
+                const btn=document.createElement('button');
+                btn.textContent='中英對照';
+                btn.onclick=()=>showLanguage(docId,'zh-en');
+                btn.dataset.langCode='zh-en';
+                switcherEl.appendChild(btn);
+            }
+            if (switcherEl.children.length === 0) switcherEl.innerHTML = '<p style="opacity:0.7;">此文獻暫無內容可供顯示。</p>';
+        }
+
+        function showLanguage(docId, langCode) {
             const doc = documentsData.find(d => d.id === docId); 
-            if (!doc) return false; 
-            if (lang === 'bo') return doc.ContentTibetan && doc.ContentTibetan.replace(/<[^>]+>|\s+/g, '') !== ''; 
-            if (lang === 'zh') return doc.ContentChinese && doc.ContentChinese.replace(/<[^>]+>|\s+/g, '') !== ''; 
-            if (lang === 'en') return doc.ContentEnglish && doc.ContentEnglish.replace(/<[^>]+>|\s+/g, '') !== ''; 
-            return false; 
-        };
-        availableLangs.forEach(lang => { 
-            if (langMap[lang] && hasContent(lang)) { 
-                const btn = document.createElement('button'); 
-                btn.textContent = langMap[lang]; 
-                btn.onclick = () => showLanguage(docId, lang); 
-                btn.dataset.langCode = lang; 
-                switcherEl.appendChild(btn); 
+            if (!doc) return;
+            const tibetanDiv = document.getElementById('modalTibetanContentEl'), 
+                  chineseDiv = document.getElementById('modalChineseContentEl'), 
+                  englishDiv = document.getElementById('modalEnglishContentEl');
+            const sep1 = document.getElementById('modalLanguageSeparator'), 
+                  sep2 = document.getElementById('modalLanguageSeparator2');
+            [tibetanDiv,chineseDiv,englishDiv].forEach(d=>d.style.display='none');
+            [sep1,sep2].forEach(s=>s.style.display='none');
+            document.getElementById('languageSwitcherModal').querySelectorAll('button').forEach(b=>{
+                b.classList.remove('active');
+                if(b.dataset.langCode===langCode)b.classList.add('active');
+            });
+            const hasBo=doc.ContentTibetan&&doc.ContentTibetan.replace(/<[^>]+>|\s+/g,'')!=='',
+                  hasZh=doc.ContentChinese&&doc.ContentChinese.replace(/<[^>]+>|\s+/g,'')!=='',
+                  hasEn=doc.ContentEnglish&&doc.ContentEnglish.replace(/<[^>]+>|\s+/g,'')!=='';
+            if(langCode==='bo'&&hasBo)tibetanDiv.style.display='block';
+            else if(langCode==='zh'&&hasZh)chineseDiv.style.display='block';
+            else if(langCode==='en'&&hasEn)englishDiv.style.display='block';
+            else if(langCode==='bo-zh'){
+                if(hasBo)tibetanDiv.style.display='block';
+                if(hasBo&&hasZh)sep1.style.display='block';
+                if(hasZh)chineseDiv.style.display='block';
             }
-        });
-        if (availableLangs.includes('bo')&&availableLangs.includes('zh')&&hasContent('bo')&&hasContent('zh')){ 
-            const btn=document.createElement('button');
-            btn.textContent='藏中對照';
-            btn.onclick=()=>showLanguage(docId,'bo-zh');
-            btn.dataset.langCode='bo-zh';
-            switcherEl.appendChild(btn);
-        }
-        if (availableLangs.includes('bo')&&availableLangs.includes('en')&&hasContent('bo')&&hasContent('en')){ 
-            const btn=document.createElement('button');
-            btn.textContent='藏英對照';
-            btn.onclick=()=>showLanguage(docId,'bo-en');
-            btn.dataset.langCode='bo-en';
-            switcherEl.appendChild(btn);
-        }
-        if (availableLangs.includes('zh')&&availableLangs.includes('en')&&hasContent('zh')&&hasContent('en')){ 
-            const btn=document.createElement('button');
-            btn.textContent='中英對照';
-            btn.onclick=()=>showLanguage(docId,'zh-en');
-            btn.dataset.langCode='zh-en';
-            switcherEl.appendChild(btn);
-        }
-        if (switcherEl.children.length === 0) switcherEl.innerHTML = '<p style="opacity:0.7;">此文獻暫無內容可供顯示。</p>';
-    }
-
-    function showLanguage(docId, langCode) {
-        const doc = documentsData.find(d => d.id === docId); 
-        if (!doc) return;
-        const tibetanDiv = document.getElementById('modalTibetanContentEl'), 
-              chineseDiv = document.getElementById('modalChineseContentEl'), 
-              englishDiv = document.getElementById('modalEnglishContentEl');
-        const sep1 = document.getElementById('modalLanguageSeparator'), 
-              sep2 = document.getElementById('modalLanguageSeparator2');
-        [tibetanDiv,chineseDiv,englishDiv].forEach(d=>d.style.display='none');
-        [sep1,sep2].forEach(s=>s.style.display='none');
-        document.getElementById('languageSwitcherModal').querySelectorAll('button').forEach(b=>{
-            b.classList.remove('active');
-            if(b.dataset.langCode===langCode)b.classList.add('active');
-        });
-        const hasBo=doc.ContentTibetan&&doc.ContentTibetan.replace(/<[^>]+>|\s+/g,'')!=='',
-              hasZh=doc.ContentChinese&&doc.ContentChinese.replace(/<[^>]+>|\s+/g,'')!=='',
-              hasEn=doc.ContentEnglish&&doc.ContentEnglish.replace(/<[^>]+>|\s+/g,'')!=='';
-        if(langCode==='bo'&&hasBo)tibetanDiv.style.display='block';
-        else if(langCode==='zh'&&hasZh)chineseDiv.style.display='block';
-        else if(langCode==='en'&&hasEn)englishDiv.style.display='block';
-        else if(langCode==='bo-zh'){
-            if(hasBo)tibetanDiv.style.display='block';
-            if(hasBo&&hasZh)sep1.style.display='block';
-            if(hasZh)chineseDiv.style.display='block';
-        }
-        else if(langCode==='bo-en'){
-            if(hasBo)tibetanDiv.style.display='block';
-            if(hasBo&&hasEn)sep1.style.display='block';
-            if(hasEn)englishDiv.style.display='block';
-        }
-        else if(langCode==='zh-en'){
-            if(hasZh)chineseDiv.style.display='block';
-            if(hasZh&&hasEn)sep1.style.display='block';
-            if(hasEn)englishDiv.style.display='block';
-        }
-    }
-
-    function openDocument(docId) {
-        const doc = documentsData.find(d => d.id === docId); 
-        if (!doc) { 
-            showMessage('找不到該文件', 'error'); 
-            return; 
-        } 
-        currentOpenDocId = docId;
-        document.querySelector('#modalHeaderContent .modal-document-title-zh').textContent=doc.chineseTitle||'';
-        document.querySelector('#modalHeaderContent .modal-document-title-bo').textContent=doc.tibetanTitle||'';
-        document.querySelector('#modalHeaderContent .modal-document-title-en').textContent=doc.englishTitle||'';
-        const tD=document.getElementById('modalTibetanContentEl'),
-              cD=document.getElementById('modalChineseContentEl'),
-              eD=document.getElementById('modalEnglishContentEl');
-        const hB=doc.ContentTibetan&&doc.ContentTibetan.replace(/<[^>]+>|\s+/g,'')!=='',
-              hZ=doc.ContentChinese&&doc.ContentChinese.replace(/<[^>]+>|\s+/g,'')!=='',
-              hE=doc.ContentEnglish&&doc.ContentEnglish.replace(/<[^>]+>|\s+/g,'')!=='';
-        tD.innerHTML=hB?`<h4>藏文原文</h4>${doc.ContentTibetan}`:`<h4>藏文原文</h4><p style="opacity:0.7;">暫無藏文內容</p>`;
-        cD.innerHTML=hZ?`<h4>中文翻譯</h4>${doc.ContentChinese}`:`<h4>中文翻譯</h4><p style="opacity:0.7;">暫無中文內容</p>`;
-        eD.innerHTML=hE?`<h4>English Translation</h4>${doc.ContentEnglish}`:`<h4>English Translation</h4><p style="opacity:0.7;">No English content.</p>`;
-        document.getElementById('modalMetaContent').innerHTML=`<strong>作者：</strong>${doc.author||'未知'} | <strong>類別：</strong>${doc.category||'未分類'}${(doc.tags&&doc.tags.length)?` | <strong>標籤：</strong>${doc.tags.join(', ')}`:''}<br><strong>資訊：</strong>${doc.meta.words || ''} | ${doc.meta.readTime || ''} | ${doc.meta.pages || ''}`;
-        updateLanguageSwitcher(doc.availableLanguages,docId);
-        let iLC='';
-        if(hB&&hZ)iLC='bo-zh';
-        else if(hB)iLC='bo';
-        else if(hZ)iLC='zh';
-        else if(hE)iLC='en';
-        const sE=document.getElementById('languageSwitcherModal');
-        if(iLC&&doc.availableLanguages.some(l=>iLC.includes(l)))showLanguage(docId,iLC);
-        else if(sE.children.length>0&&sE.children[0].dataset)showLanguage(docId,sE.children[0].dataset.langCode);
-        showModal('documentModal');
-    }
-
-    // --- Utility Functions ---
-    function showMessage(text, type = 'info') {
-        const msgArea = document.getElementById('messageArea'), msgEl = document.createElement('div');
-        msgEl.style.cssText = `background:${type==='error'?'rgba(220,53,69,0.9)':type==='success'?'rgba(40,167,69,0.9)':'rgba(23,162,184,0.9)'};color:white;padding:1rem 1.5rem;border-radius:var(--border-radius-small);margin-bottom:0.5rem;backdrop-filter:blur(10px);animation:slideInRight 0.3s ease-out;box-shadow:0 5px 15px rgba(0,0,0,0.2);`;
-        msgEl.textContent=text;
-        msgArea.appendChild(msgEl);
-        setTimeout(()=>{
-            msgEl.style.animation='slideOutRight 0.3s ease-out forwards';
-            setTimeout(()=> {
-                if(msgArea.contains(msgEl))msgArea.removeChild(msgEl);
-            },300);
-        },3000);
-    }
-
-    function showInfo(title) { 
-        const infoMap = {
-            '才旺諾布': {
-                content: 'loading...',
-                images: 'rigzintsewangnorbu'
-            },
-            '編者的話': {
-                file: 'data/preface.txt'
-            },
-            '古籍抄本': {
-                content: '古籍手稿展示',
-                images: 'manuscripts'
-            },
-            '祖寺介紹': {
-                file: 'data/temple.txt'
-            },
-            '參考資源': {
-                file: 'data/reference.txt'
+            else if(langCode==='bo-en'){
+                if(hasBo)tibetanDiv.style.display='block';
+                if(hasBo&&hasEn)sep1.style.display='block';
+                if(hasEn)englishDiv.style.display='block';
             }
-        };
+            else if(langCode==='zh-en'){
+                if(hasZh)chineseDiv.style.display='block';
+                if(hasZh&&hasEn)sep1.style.display='block';
+                if(hasEn)englishDiv.style.display='block';
+            }
+        }
+
+        function openDocument(docId) {
+            const doc = documentsData.find(d => d.id === docId); 
+            if (!doc) { 
+                showMessage('找不到該文件', 'error'); 
+                return; 
+            } 
+            currentOpenDocId = docId;
+            document.querySelector('#modalHeaderContent .modal-document-title-zh').textContent=doc.chineseTitle||'';
+            document.querySelector('#modalHeaderContent .modal-document-title-bo').textContent=doc.tibetanTitle||'';
+            document.querySelector('#modalHeaderContent .modal-document-title-en').textContent=doc.englishTitle||'';
+            const tD=document.getElementById('modalTibetanContentEl'),
+                  cD=document.getElementById('modalChineseContentEl'),
+                  eD=document.getElementById('modalEnglishContentEl');
+            const hB=doc.ContentTibetan&&doc.ContentTibetan.replace(/<[^>]+>|\s+/g,'')!=='',
+                  hZ=doc.ContentChinese&&doc.ContentChinese.replace(/<[^>]+>|\s+/g,'')!=='',
+                  hE=doc.ContentEnglish&&doc.ContentEnglish.replace(/<[^>]+>|\s+/g,'')!=='';
+            tD.innerHTML=hB?`<h4>藏文原文</h4>${doc.ContentTibetan}`:`<h4>藏文原文</h4><p style="opacity:0.7;">暫無藏文內容</p>`;
+            cD.innerHTML=hZ?`<h4>中文翻譯</h4>${doc.ContentChinese}`:`<h4>中文翻譯</h4><p style="opacity:0.7;">暫無中文內容</p>`;
+            eD.innerHTML=hE?`<h4>English Translation</h4>${doc.ContentEnglish}`:`<h4>English Translation</h4><p style="opacity:0.7;">No English content.</p>`;
+            document.getElementById('modalMetaContent').innerHTML=`<strong>作者：</strong>${doc.author||'未知'} | <strong>類別：</strong>${doc.category||'未分類'}${(doc.tags&&doc.tags.length)?` | <strong>標籤：</strong>${doc.tags.join(', ')}`:''}<br><strong>資訊：</strong>${doc.meta.words || ''} | ${doc.meta.readTime || ''} | ${doc.meta.pages || ''}`;
+            updateLanguageSwitcher(doc.availableLanguages,docId);
+            let iLC='';
+            if(hB&&hZ)iLC='bo-zh';
+            else if(hB)iLC='bo';
+            else if(hZ)iLC='zh';
+            else if(hE)iLC='en';
+            const sE=document.getElementById('languageSwitcherModal');
+            if(iLC&&doc.availableLanguages.some(l=>iLC.includes(l)))showLanguage(docId,iLC);
+            else if(sE.children.length>0&&sE.children[0].dataset)showLanguage(docId,sE.children[0].dataset.langCode);
+            showModal('documentModal');
+        }
+
+        // --- Utility Functions ---
+        function showMessage(text, type = 'info') {
+            const msgArea = document.getElementById('messageArea'), msgEl = document.createElement('div');
+            msgEl.style.cssText = `background:${type==='error'?'rgba(220,53,69,0.9)':type==='success'?'rgba(40,167,69,0.9)':'rgba(23,162,184,0.9)'};color:white;padding:1rem 1.5rem;border-radius:var(--border-radius-small);margin-bottom:0.5rem;backdrop-filter:blur(10px);animation:slideInRight 0.3s ease-out;box-shadow:0 5px 15px rgba(0,0,0,0.2);`;
+            msgEl.textContent=text;
+            msgArea.appendChild(msgEl);
+            setTimeout(()=>{
+                msgEl.style.animation='slideOutRight 0.3s ease-out forwards';
+                setTimeout(()=> {
+                    if(msgArea.contains(msgEl))msgArea.removeChild(msgEl);
+                },300);
+            },3000);
+        }
+
+        function showInfo(title) { 
+            const infoMap = {
+                '才旺諾布': {
+                    content: 'loading...',
+                    images: 'rigzintsewangnorbu'
+                },
+                '編者的話': {
+                    file: 'data/preface.txt'
+                },
+                '古籍抄本': {
+                    content: '古籍手稿展示',
+                    images: 'manuscripts'
+                },
+                '祖寺介紹': {
+                    file: 'data/temple1.txt'
+                },
+                '參考資源': {
+                    file: 'data/reference.txt'
+                }
+            };
+            
+            const info = infoMap[title];
+            if (info) {
+                if (info.file) {
+                    fetch(info.file)
+                        .then(response => {
+                            if (!response.ok) throw new Error('檔案讀取失敗');
+                            return response.text();
+                        })
+                        .then(content => {
+                            showInfoModal(title, content);
+                        })
+                        .catch(error => {
+                            console.error(`無法讀取 ${info.file}:`, error);
+                            showMessage(`無法載入${title}內容`, 'error');
+                        });
+                } else if (info.images) {
+                    showImageGalleryModal(title, info.images);
+                }
+            }
+        }
         
-        const info = infoMap[title];
-        if (info) {
-            if (info.file) {
-                fetch(info.file)
-                    .then(response => {
-                        if (!response.ok) throw new Error('檔案讀取失敗');
-                        return response.text();
-                    })
-                    .then(content => {
-                        showInfoModal(title, content);
-                    })
-                    .catch(error => {
-                        console.error(`無法讀取 ${info.file}:`, error);
-                        showMessage(`無法載入${title}內容`, 'error');
-                    });
-            } else if (info.images) {
-                showImageGalleryModal(title, info.images);
+        function showInfoModal(title, content) {
+            let modal = document.getElementById('infoModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'infoModal';
+                modal.className = 'modal';
+                modal.innerHTML = `
+                    <div class="modal-content" style="max-width: 800px;">
+                        <button class="modal-close" onclick="closeModal('infoModal')">×</button>
+                        <h2 id="infoModalTitle" style="margin-bottom: 1.5rem; font-family: var(--chinese-title-font);"></h2>
+                        <div id="infoModalContent" style="line-height: 1.8; white-space: pre-wrap; font-family: var(--chinese-content-font);"></div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
             }
+            
+            document.getElementById('infoModalTitle').textContent = title;
+            document.getElementById('infoModalContent').textContent = content;
+            showModal('infoModal');
+        }
+
+        async function showImageGalleryModal(title, folder) {
+    let modal = document.getElementById('imageGalleryModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'imageGalleryModal';
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content" style="max-width: 900px;">
+                <button class="modal-close" onclick="closeModal('imageGalleryModal')">×</button>
+                <h2 id="galleryModalTitle" style="margin-bottom: 1.5rem; font-family: var(--chinese-title-font);"></h2>
+                <div id="galleryModalContent" class="image-gallery"></div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    
+    document.getElementById('galleryModalTitle').textContent = title;
+    const galleryContent = document.getElementById('galleryModalContent');
+    galleryContent.innerHTML = '<p style="text-align:center;">載入圖片中...</p>';
+
+    // 確保 manifest 已載入
+    if (!fileManifest) {
+        try {
+            const manifestResponse = await fetch('./data/file_manifest.json?v=' + new Date().getTime());
+            if (!manifestResponse.ok) throw new Error('Cannot find manifest');
+            fileManifest = await manifestResponse.json();
+        } catch(e) {
+             galleryContent.innerHTML = '<p style="text-align:center;">無法載入圖片清單。</p>';
+             showModal('imageGalleryModal');
+             return;
         }
     }
     
-    function showInfoModal(title, content) {
-        let modal = document.getElementById('infoModal');
-        if (!modal) {
-            modal = document.createElement('div');
-            modal.id = 'infoModal';
-            modal.className = 'modal';
-            modal.innerHTML = `
-                <div class="modal-content" style="max-width: 800px;">
-                    <button class="modal-close" onclick="closeModal('infoModal')">×</button>
-                    <h2 id="infoModalTitle" style="margin-bottom: 1.5rem; font-family: var(--chinese-title-font);"></h2>
-                    <div id="infoModalContent" style="line-height: 1.8; white-space: pre-wrap; font-family: var(--chinese-content-font);"></div>
-                </div>
-            `;
-            document.body.appendChild(modal);
+    // 從 manifest 中取得圖片列表
+    const images = fileManifest.images[folder] || [];
+    
+    if (images.length > 0) {
+        galleryContent.innerHTML = images.map(img => 
+            `<img src="${folder}/${img}" alt="${title}" onclick="openFullscreenImage(this.src)" style="cursor:pointer;">`
+        ).join('');
+    } else {
+        galleryContent.innerHTML = `<p style="text-align:center;">此分類 (${folder}) 中暫無圖片。</p>`;
+    }
+    
+    showModal('imageGalleryModal');
+}
+
+        function openFullscreenImage(src) {
+            window.open(src, '_blank');
         }
-        
-        document.getElementById('infoModalTitle').textContent = title;
-        document.getElementById('infoModalContent').textContent = content;
-        showModal('infoModal');
-    }
 
-    async function showImageGalleryModal(title, folder) {
-let modal = document.getElementById('imageGalleryModal');
-if (!modal) {
-    modal = document.createElement('div');
-    modal.id = 'imageGalleryModal';
-    modal.className = 'modal';
-    modal.innerHTML = `
-        <div class="modal-content" style="max-width: 900px;">
-            <button class="modal-close" onclick="closeModal('imageGalleryModal')">×</button>
-            <h2 id="galleryModalTitle" style="margin-bottom: 1.5rem; font-family: var(--chinese-title-font);"></h2>
-            <div id="galleryModalContent" class="image-gallery"></div>
-        </div>
-    `;
-    document.body.appendChild(modal);
-}
-
-document.getElementById('galleryModalTitle').textContent = title;
-const galleryContent = document.getElementById('galleryModalContent');
-galleryContent.innerHTML = '<p style="text-align:center;">載入圖片中...</p>';
-
-// 確保 manifest 已載入
-if (!fileManifest) {
-    try {
-        const manifestResponse = await fetch('./data/file_manifest.json?v=' + new Date().getTime());
-        if (!manifestResponse.ok) throw new Error('Cannot find manifest');
-        fileManifest = await manifestResponse.json();
-    } catch(e) {
-         galleryContent.innerHTML = '<p style="text-align:center;">無法載入圖片清單。</p>';
-         showModal('imageGalleryModal');
-         return;
-    }
-}
-
-// 從 manifest 中取得圖片列表
-const images = fileManifest.images[folder] || [];
-
-if (images.length > 0) {
-    galleryContent.innerHTML = images.map(img => 
-        `<img src="${folder}/${img}" alt="${title}" onclick="openFullscreenImage(this.src)" style="cursor:pointer;">`
-    ).join('');
-} else {
-    galleryContent.innerHTML = `<p style="text-align:center;">此分類 (${folder}) 中暫無圖片。</p>`;
-}
-
-showModal('imageGalleryModal');
-}
-code
-Code
-function openFullscreenImage(src) {
-        window.open(src, '_blank');
-    }
-
-    function showTools() { 
-        toggleUtilitySidebar(); 
-    }
-
-    function toggleUtilitySidebar() {
-        const sidebar = document.getElementById('utilitySidebarEl'), 
-              mainContent = document.getElementById('mainContentArea');
-        const isActive = sidebar.classList.contains('active');
-        if (isActive) { 
-            sidebar.classList.remove('active'); 
-            mainContent.classList.remove('with-right-sidebar'); 
-            setTimeout(() => sidebar.style.display = 'none', 300);
-        } else { 
-            sidebar.style.display = 'block'; 
-            setTimeout(() => { 
-                sidebar.classList.add('active'); 
-                mainContent.classList.add('with-right-sidebar'); 
-            }, 10); 
+        function showTools() { 
+            toggleUtilitySidebar(); 
         }
-    }
 
-    function showUtilityModal(modalType, title) { 
-        if (modalType === 'donateModal') {
-            const donateContent = `
+        function toggleUtilitySidebar() {
+            const sidebar = document.getElementById('utilitySidebarEl'), 
+                  mainContent = document.getElementById('mainContentArea');
+            const isActive = sidebar.classList.contains('active');
+            if (isActive) { 
+                sidebar.classList.remove('active'); 
+                mainContent.classList.remove('with-right-sidebar'); 
+                setTimeout(() => sidebar.style.display = 'none', 300);
+            } else { 
+                sidebar.style.display = 'block'; 
+                setTimeout(() => { 
+                    sidebar.classList.add('active'); 
+                    mainContent.classList.add('with-right-sidebar'); 
+                }, 10); 
+            }
+        }
+
+        function showUtilityModal(modalType, title) { 
+            if (modalType === 'donateModal') {
+                const donateContent = `
 1、戶名：中華民國噶陀仁珍千寶佛學會
-郵局劃撥帳號：18856281
+   郵局劃撥帳號：18856281
+
+2、戶名:中華民國噶陀仁珍千寶佛學會 / 紀靜宜
+  （Beneficiary:Kathog Rigzin Chenpo Dharma association/ Chi Ching-Yi)
+    轉帳或匯款銀行:台北富邦商業銀行信義分行
+
 2、海外匯款：
-Beneficiary：Kathog Rigzin Chenpo Dharma association
-Bank：TAIPEI FUBON COMMERCIAL BANK CO., LTD(Hsinyi Branch)
-swift code：TPBKTWTP460
-account No.：460-210836692`;
-code
-Code
-showInfoModal(title, donateContent);
-        } else {
-            showMessage(`${title} 功能開發中...`, 'info');
+   Beneficiary：Kathog Rigzin Chenpo Dharma association
+   Bank：TAIPEI FUBON COMMERCIAL BANK CO., LTD(Hsinyi Branch)
+   swift code：TPBKTWTP460
+   account No.：460-210836692`;
+                
+                showInfoModal(title, donateContent);
+            } else {
+                showMessage(`${title} 功能開發中...`, 'info');
+            }
         }
-    }
 
-    function contactSupport() { 
-        const contactContent = `電話：0968500586、0906357073
+        function contactSupport() { 
+            const contactContent = `電話：0968500586、0906357073
+
 Email：rigzinsungbum@gmail.com
+
 Address：No. 322, Shenqing Rd., Shengang Dist., Taichung City 429014, Taiwan (R.O.C.)
-服務時間：週一至週五 9:0017:00 週末 10:0015:00`;
-code
-Code
-showInfoModal('聯繫客服', contactContent);
-    }
 
-    // --- Favorites Functionality ---
-    function loadFavorites() {
-        const storedFavorites = localStorage.getItem('sunbumFavorites');
-        if (storedFavorites) {
-            favorites = JSON.parse(storedFavorites);
+服務時間：週一至週五 9:00~17:00 週末 10:00~15:00`;
+            
+            showInfoModal('聯繫客服', contactContent);
         }
-    }
 
-    function saveFavorites() {
-        localStorage.setItem('sunbumFavorites', JSON.stringify(favorites));
-    }
-
-    function toggleFavorite(docId, btnElement) {
-        const index = favorites.indexOf(docId);
-        if (index > -1) {
-            favorites.splice(index, 1);
-            btnElement.classList.remove('liked');
-            showMessage('已取消收藏', 'info');
-        } else {
-            favorites.push(docId);
-            btnElement.classList.add('liked');
-            showMessage('已加入收藏!', 'success');
+        // --- Favorites Functionality ---
+        function loadFavorites() {
+            const storedFavorites = localStorage.getItem('sunbumFavorites');
+            if (storedFavorites) {
+                favorites = JSON.parse(storedFavorites);
+            }
         }
-        saveFavorites();
-        updateFavoritesList();
-    }
 
-    function removeFavorite(docId) {
-        const index = favorites.indexOf(docId);
-        if (index > -1) {
-            favorites.splice(index, 1);
+        function saveFavorites() {
+            localStorage.setItem('sunbumFavorites', JSON.stringify(favorites));
+        }
+
+        function toggleFavorite(docId, btnElement) {
+            const index = favorites.indexOf(docId);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                btnElement.classList.remove('liked');
+                showMessage('已取消收藏', 'info');
+            } else {
+                favorites.push(docId);
+                btnElement.classList.add('liked');
+                showMessage('已加入收藏!', 'success');
+            }
             saveFavorites();
+            updateFavoritesList();
         }
-    }
 
-    function updateFavoritesList() {
-        const container = document.getElementById('favoritesListContainerEl');
-        if (favorites.length === 0) {
-            container.innerHTML = '<p style="opacity:0.7;">暫無收藏。</p>';
-            return;
+        function removeFavorite(docId) {
+            const index = favorites.indexOf(docId);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                saveFavorites();
+            }
         }
-        container.innerHTML = favorites.map(favId => {
-            const doc = documentsData.find(d => d.id === favId);
-            return doc ? `<div class="favorite-item" onclick="openDocument('${doc.id}'); toggleUtilitySidebar();">${doc.chineseTitle || doc.tibetanTitle || '未知文稿'}</div>` : '';
-        }).join('');
-    }
 
-    function showFavorites() {
-        const favContainer = document.getElementById('favoritesListContainerEl');
-        favContainer.style.display = favContainer.style.display === 'none' ? 'block' : 'none';
-        if (favContainer.style.display === 'block') updateFavoritesList();
-    }
-
-    // --- Event Listeners ---
-    document.addEventListener('DOMContentLoaded', function() {
-        loadFavorites();
-        initBackgroundSlider(); // <--- 在這裡加入呼叫
-
-        // Search functionality
-        document.getElementById('searchInputEl').addEventListener('input', function() {
-            const sT=this.value.toLowerCase().trim();
-            if(!sT){
-                renderDocuments(documentsData);
+        function updateFavoritesList() {
+            const container = document.getElementById('favoritesListContainerEl');
+            if (favorites.length === 0) {
+                container.innerHTML = '<p style="opacity:0.7;">暫無收藏。</p>';
                 return;
             }
-            const filt=documentsData.filter(d=>
-                (d.tibetanTitle&&d.tibetanTitle.toLowerCase().includes(sT))||
-                (d.chineseTitle&&d.chineseTitle.toLowerCase().includes(sT))||
-                (d.englishTitle&&d.englishTitle.toLowerCase().includes(sT))||
-                (d.author&&d.author.toLowerCase().includes(sT))||
-                (d.ContentTibetan&&d.ContentTibetan.toLowerCase().includes(sT))||
-                (d.ContentChinese&&d.ContentChinese.toLowerCase().includes(sT))||
-                (d.ContentEnglish&&d.ContentEnglish.toLowerCase().includes(sT))||
-                (d.tags&&d.tags.some(t=>t.toLowerCase().includes(sT)))
-            );
-            renderDocuments(filt);
-            document.getElementById('totalCountEl').textContent=filt.length;
-            if(filt.length===0)document.getElementById('documentsGridEl').innerHTML='<div style="text-align:center;padding:2rem;color:var(--text-light);opacity:0.8;">未找到與 "'+sT+'" 相關的文獻</div>';
-        });
+            container.innerHTML = favorites.map(favId => {
+                const doc = documentsData.find(d => d.id === favId);
+                return doc ? `<div class="favorite-item" onclick="openDocument('${doc.id}'); toggleUtilitySidebar();">${doc.chineseTitle || doc.tibetanTitle || '未知文稿'}</div>` : '';
+            }).join('');
+        }
 
-        // View mode buttons
-        document.getElementById('gridViewBtn').addEventListener('click', function() {
-            this.classList.add('active');
-            document.getElementById('listViewBtn').classList.remove('active');
-            document.getElementById('documentsGridEl').style.gridTemplateColumns='repeat(auto-fit,minmax(320px,1fr))';
-        });
-        document.getElementById('listViewBtn').addEventListener('click', function() {
-            this.classList.add('active');
-            document.getElementById('gridViewBtn').classList.remove('active');
-            document.getElementById('documentsGridEl').style.gridTemplateColumns='1fr';
-        });
+        function showFavorites() {
+            const favContainer = document.getElementById('favoritesListContainerEl');
+            favContainer.style.display = favContainer.style.display === 'none' ? 'block' : 'none';
+            if (favContainer.style.display === 'block') updateFavoritesList();
+        }
 
-        // Close modals with backdrop click or Escape key
-        document.querySelectorAll('.modal').forEach(m=>{
-            m.addEventListener('click',function(e){
-                if(e.target===this)closeModal(this.id);
+        // --- Event Listeners ---
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFavorites();
+            initBackgroundSlider(); // <--- 在這裡加入呼叫
+
+            // Search functionality
+            document.getElementById('searchInputEl').addEventListener('input', function() {
+                const sT=this.value.toLowerCase().trim();
+                if(!sT){
+                    renderDocuments(documentsData);
+                    return;
+                }
+                const filt=documentsData.filter(d=>
+                    (d.tibetanTitle&&d.tibetanTitle.toLowerCase().includes(sT))||
+                    (d.chineseTitle&&d.chineseTitle.toLowerCase().includes(sT))||
+                    (d.englishTitle&&d.englishTitle.toLowerCase().includes(sT))||
+                    (d.author&&d.author.toLowerCase().includes(sT))||
+                    (d.ContentTibetan&&d.ContentTibetan.toLowerCase().includes(sT))||
+                    (d.ContentChinese&&d.ContentChinese.toLowerCase().includes(sT))||
+                    (d.ContentEnglish&&d.ContentEnglish.toLowerCase().includes(sT))||
+                    (d.tags&&d.tags.some(t=>t.toLowerCase().includes(sT)))
+                );
+                renderDocuments(filt);
+                document.getElementById('totalCountEl').textContent=filt.length;
+                if(filt.length===0)document.getElementById('documentsGridEl').innerHTML='<div style="text-align:center;padding:2rem;color:var(--text-light);opacity:0.8;">未找到與 "'+sT+'" 相關的文獻</div>';
             });
-        });
-        document.addEventListener('keydown',function(e){
-            if(e.key==="Escape")document.querySelectorAll('.modal.active').forEach(m=>closeModal(m.id));
+
+            // View mode buttons
+            document.getElementById('gridViewBtn').addEventListener('click', function() {
+                this.classList.add('active');
+                document.getElementById('listViewBtn').classList.remove('active');
+                document.getElementById('documentsGridEl').style.gridTemplateColumns='repeat(auto-fit,minmax(320px,1fr))';
+            });
+            document.getElementById('listViewBtn').addEventListener('click', function() {
+                this.classList.add('active');
+                document.getElementById('gridViewBtn').classList.remove('active');
+                document.getElementById('documentsGridEl').style.gridTemplateColumns='1fr';
+            });
+
+            // Close modals with backdrop click or Escape key
+            document.querySelectorAll('.modal').forEach(m=>{
+                m.addEventListener('click',function(e){
+                    if(e.target===this)closeModal(this.id);
+                });
+            });
+            document.addEventListener('keydown',function(e){
+                if(e.key==="Escape")document.querySelectorAll('.modal.active').forEach(m=>closeModal(m.id));
+            });
+
+            // Initialize
+            if (window.innerWidth <= 768) isLeftSidebarActive = false; 
+            else isLeftSidebarActive = true;
+            isLeftSidebarActive = !isLeftSidebarActive; 
+            toggleLeftSidebar();
+            
+            showModeSelectorScreen(); 
         });
 
-        // Initialize
-        if (window.innerWidth <= 768) isLeftSidebarActive = false; 
-        else isLeftSidebarActive = true;
-        isLeftSidebarActive = !isLeftSidebarActive; 
-        toggleLeftSidebar();
-        
-        showModeSelectorScreen(); 
-    });
-
-    // CSS Keyframes
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = `
-        @keyframes slideInRight{from{transform:translateX(100%);opacity:0;}to{transform:translateX(0);opacity:1;}}
-        @keyframes slideOutRight{from{transform:translateX(0);opacity:1;}to{transform:translateX(100%);opacity:0;}}
-    `;
-    document.head.appendChild(styleSheet);
-</script>
+        // CSS Keyframes
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            @keyframes slideInRight{from{transform:translateX(100%);opacity:0;}to{transform:translateX(0);opacity:1;}}
+            @keyframes slideOutRight{from{transform:translateX(0);opacity:1;}to{transform:translateX(100%);opacity:0;}}
+        `;
+        document.head.appendChild(styleSheet);
+    </script>
 </body>
 </html>
