@@ -108,7 +108,7 @@ export default function App() {
             {/* *** 關鍵修改：加入 Logo *** */}
             <Link to="/" className="flex items-center space-x-3">
               <img src="/images/Logo.png" alt="Logo" className="h-12 w-12" />
-              <span className="text-xl font-chinese-title font-chinese-title text-primary">才旺諾布全集</span>
+              <span className="text-xl font-chinese-title font-chinese-title text-primary">仁珍才旺諾布全集</span>
             </Link>
             
             <div className="flex items-center space-x-4">
