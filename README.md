@@ -1,28 +1,11 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 才旺諾布全集 (The Collected Works of Tsewang Norbu)
 
-# Run and deploy your AI Studio app
+這是「才旺諾布全集」網站的原始碼儲存庫。
 
-This contains everything you need to run your app locally.
+This is the source code repository for the Tsewang Norbu's Collected Works website.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1nRKG0O52TCZga9vl6Wt5vGzjL17QrFdb
+---
 
-## Run Locally
+### 網站連結 (Live Site)
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
-=======
-# tsewangnorbu-sungbum
->>>>>>> c130f6b805bd33da2e83928a4f0dc4c0fc57262c
-=======
-# tsewangnorbu-sungbum
->>>>>>> c130f6b805bd33da2e83928a4f0dc4c0fc57262c
+[https://rigzinsungbum.com](https://rigzinsungbum.com)
