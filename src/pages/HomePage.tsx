@@ -26,7 +26,7 @@ export default function HomePage({ startMusic }: HomePageProps) {
             Rigzin Tsewang Norbu's Collected Works
           </p>
           <p className="text-lg mt-12 max-w-xl mx-auto">
-            深入了解明代西藏偉大學者、和平締造者——噶陀仁珍千寶才旺諾布的生平與著作。
+            深入了解清代西藏偉大學者、和平締造者———噶陀仁珍千寶才旺諾布的生平與著作。
           </p>
         </div>
       </section>
