@@ -1,0 +1,48 @@
+/* 讓藏文和中文在對照模式下有好的排版 */
+.side-by-side {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* 藏文專用字體樣式 */
+.font-tibetan-body {
+  font-family: 'Noto Sans Tibetan', serif;
+  font-size: 1.25rem; /* 藏文通常需要稍大字體 */
+  line-height: 2.5rem;
+}
+
+/* 語言切換按鈕的選中樣式 */
+.lang-button.active {
+  background-color: #c09a59; /* accent color */
+  color: white;
+  font-weight: bold;
+}
+
+/* 回到頂部按鈕的樣式 */
+.back-to-top-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: rgba(192, 154, 89, 0.8); /* accent with transparency */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+  backdrop-filter: blur(5px);
+}
+
+.back-to-top-button.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

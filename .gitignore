@@ -1,0 +1,66 @@
+# 環境變數檔案
+.env
+.env.local
+.env.production
+
+# 日誌檔案
+*.log
+logs/
+*.log.*
+
+# Node.js 相關
+node_modules/
+npm-debug.log*
+
+# 資料檔案
+data/all_runtime_documents.json
+
+# 作業系統檔案
+.DS_Store
+Thumbs.db
+
+# 編輯器檔案
+.vscode/
+.idea/
+
+# 臨時檔案
+*.tmp
+*.temp
+
+git-filter-repo/
+
+node_modules/
+data/all_runtime_documents.json
+<<<<<<< HEAD
+generateHash.js
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# local env files
+.env.local
+.env.*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+=======
+generateHash.js
+>>>>>>> c130f6b805bd33da2e83928a4f0dc4c0fc57262c
