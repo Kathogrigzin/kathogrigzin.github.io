@@ -20,10 +20,10 @@ export default function HomePage({ startMusic }: HomePageProps) {
             仁珍才旺諾布全集
           </h1>
           <h2 className="text-3xl md:text-4xl font-tibetan-title mb-4 drop-shadow-md">
-            ཚེ་དབང་ནོར་བུའི་གསུང་འབུམ།
+            རིག་འཛིན་ཚེ་དབང་ནོར་བུའི་གསུང་འབུམ།
           </h2>
           <p className="text-xl md:text-2xl font-serif-italic tracking-wider mb-8 drop-shadow-md">
-            Tsewang Norbu's Collected Works
+            Rigzin Tsewang Norbu's Collected Works
           </p>
           <p className="text-lg mt-12 max-w-xl mx-auto">
             清代西藏偉大學者、和平締造者

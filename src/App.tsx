@@ -173,7 +173,7 @@ export default function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* 關於我們 */}
                 <div>
-                    <h4 className="font-bold text-white mb-4 text-lg">才旺諾布全集</h4>
+                    <h4 className="font-bold text-white mb-4 text-lg">仁珍才旺諾布全集</h4>
                     <p className="text-sm text-gray-400">致力於保存與弘揚偉大學者噶陀仁珍千寶才旺諾布的一生著作。</p>
                 </div>
                 {/* 學習連結 */}
