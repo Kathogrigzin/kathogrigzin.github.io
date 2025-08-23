@@ -1,8 +1,8 @@
-# 才旺諾布全集 (The Collected Works of Tsewang Norbu)
+# 仁珍才旺諾布全集 (The Collected Works of Rigzin Tsewang Norbu)
 
-這是「才旺諾布全集」網站的原始碼儲存庫。
+這是「仁珍才旺諾布全集」網站的原始碼儲存庫。
 
-This is the source code repository for the Tsewang Norbu's Collected Works website.
+This is the source code repository for the Rigzin Tsewang Norbu's Collected Works website.
 
 ---
 

@@ -90,7 +90,7 @@ export default function App() {
 
   const navLinks = [
     { name: '首頁', path: '/' },
-    { name: '關於才旺諾布', path: '/about' },
+    { name: '才旺諾布', path: '/about' },
     { name: '古籍抄本', path: '/manuscripts' },
     { name: '祖寺介紹', path: '/temple' },
     { name: '參考資料', path: '/references' },
@@ -108,7 +108,7 @@ export default function App() {
             {/* *** 關鍵修改：加入 Logo *** */}
             <Link to="/" className="flex items-center space-x-3">
               <img src="/images/Logo.png" alt="Logo" className="h-12 w-12" />
-              <span className="text-xl font-chinese-title font-chinese-title text-primary">才旺諾布全集</span>
+              <span className="text-xl font-chinese-title font-chinese-title text-primary">仁珍才旺諾布全集</span>
             </Link>
             
             <div className="flex items-center space-x-4">
@@ -151,7 +151,7 @@ export default function App() {
           <Route path="/category/:categoryId" element={<CategoryPage />} />
           <Route path="/article/:articleId" element={<ArticlePage />} />
           <Route path="/search" element={<SearchResultsPage />} /> {/* 新增搜尋結果頁路由 */}
-          <Route path="/about" element={<div className="p-8 text-center"><h1>關於才旺諾布</h1><p>頁面內容建置中...</p></div>} />
+          <Route path="/about" element={<div className="p-8 text-center"><h1>才旺諾布</h1><p>頁面內容建置中...</p></div>} />
           <Route path="/manuscripts" element={<div className="p-8 text-center"><h1>古籍抄本</h1><p>頁面內容建置中...</p></div>} />
           <Route path="/temple" element={<div className="p-8 text-center"><h1>祖寺介紹</h1><p>頁面內容建置中...</p></div>} />
           <Route path="/references" element={<div className="p-8 text-center"><h1>參考資料</h1><p>頁面內容建置中...</p></div>} />
@@ -205,7 +205,7 @@ export default function App() {
                 </div>
             </div>
             <div className="mt-12 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
-                © 2025 才旺諾布全集. All Rights Reserved.
+                © 2025 仁珍才旺諾布全集. All Rights Reserved.
             </div>
         </div>
       </footer>

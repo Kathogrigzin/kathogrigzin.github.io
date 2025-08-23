@@ -17,7 +17,7 @@ export default function HomePage({ startMusic }: HomePageProps) {
         ></div>
         <div className="relative max-w-3xl mx-auto px-4">
           <h1 className="text-4xl md:text-6xl font-extrabold font-chinese-title mb-4 drop-shadow-md">
-            才旺諾布全集
+            仁珍才旺諾布全集
           </h1>
           <h2 className="text-3xl md:text-4xl font-tibetan-title mb-4 drop-shadow-md">
             ཚེ་དབང་ནོར་བུའི་གསུང་འབུམ།
@@ -26,7 +26,8 @@ export default function HomePage({ startMusic }: HomePageProps) {
             Tsewang Norbu's Collected Works
           </p>
           <p className="text-lg mt-12 max-w-xl mx-auto">
-            深入了解十七世紀西藏偉大學者、和平締造者——噶陀仁珍千寶才旺諾布的生平與著作。
+            清代西藏偉大學者、和平締造者
+          <p>噶陀仁珍千寶才旺諾布的生平與著作</p>
           </p>
         </div>
       </section>
