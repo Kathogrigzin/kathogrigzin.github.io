@@ -7,6 +7,7 @@ export interface Article {
   title_ti: string;
   content_ch: string;
   content_ti: string;
+  author?: string; // <-- 關鍵修改：新增 author 欄位 (? 代表它是可選的)
   imageUrl?: string;
   reading_time: { ch: number; ti: number };
 }
@@ -45,6 +46,7 @@ export async function getArticles(categoryId?: string): Promise<Article[]> {
             title_ti: rawArticle.tibetanTitle,
             content_ch: rawArticle.ContentChinese,
             content_ti: rawArticle.ContentTibetan,
+            author: rawArticle.author, // <-- 關鍵修改：讀取 JSON 中的 author 欄位
             imageUrl: rawArticle.imageUrl,
             reading_time: {
               ch: calculateReadingTime(rawArticle.ContentChinese),

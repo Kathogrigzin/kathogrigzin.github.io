@@ -52,9 +52,12 @@ export default function ArticlePage() {
         <h1 className={`text-3xl md:text-4xl font-bold text-center ${titleClassName}`}>
           {titleToDisplay}
         </h1>
-        <p className="text-center text-secondary mt-2">
-          分類：{article.category} | 閱讀時間：約 {readingTime} 分鐘
-        </p>
+          <p className="text-center text-secondary mt-2">
+          分類：{article.category}
+          {/* 只有當 author 存在時，才顯示作者欄位 */}
+          {article.author && <span> | 作者：{article.author}</span>}
+          | 閱讀時間：約 {readingTime} 分鐘
+         </p>
       </div>
 
       <div className="flex justify-center my-6 bg-surface p-2 rounded-lg shadow-sm sticky top-20 z-10">
