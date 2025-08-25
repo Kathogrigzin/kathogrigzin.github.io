@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getArticles, Article } from '../data/articles';
+import LoadingSpinner from '../components/LoadingSpinner.tsx'; // 引入新元件
 
 export default function SearchResultsPage() {
   const [searchParams] = useSearchParams();
@@ -43,7 +44,7 @@ export default function SearchResultsPage() {
       </h1>
       <p className="text-secondary mb-8">找到了 {results.length} 篇文章</p>
 
-      {loading && <p>搜尋中...</p>}
+      {if (loading) return <LoadingSpinner />}
       
       {!loading && results.length === 0 && (
         <p>找不到與 "{query}" 相關的文章。</p>

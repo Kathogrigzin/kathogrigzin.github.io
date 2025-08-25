@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getArticles, Article } from '../data/articles.ts';
 import { categories, Category } from '../data/categories.ts';
+import LoadingSpinner from '../components/LoadingSpinner.tsx'; // 引入新元件
 
 export default function ArticlePage() {
   const [viewMode, setViewMode] = useState<'ch' | 'ti' | 'both'>('ch');
@@ -21,7 +22,7 @@ export default function ArticlePage() {
   }, [articleId]);
 
   if (loading) {
-    return <div className="text-center p-20 text-xl">正在載入文章...</div>;
+    return <LoadingSpinner />;
   }
 
   if (!article) {

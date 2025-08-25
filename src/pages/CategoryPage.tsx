@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getArticles, Article } from '../data/articles';
 import { categories, Category } from '../data/categories';
+import LoadingSpinner from '../components/LoadingSpinner.tsx'; // 引入新元件
 
 export default function CategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -23,7 +24,7 @@ export default function CategoryPage() {
     window.scrollTo(0, 0);
   }, [categoryId]);
 
-  if (loading) return <div className="text-center p-20">正在載入...</div>;
+  if (loading) return <LoadingSpinner />;
   if (!category) return <div className="text-center p-20">找不到此分類</div>;
 
   return (

@@ -19,6 +19,15 @@
   font-weight: bold;
 }
 
+/* ... (您現有的其他 CSS 樣式) ... */
+
+/* 新增詩歌置中的 class */
+.poem-block {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* 回到頂部按鈕的樣式 */
 .back-to-top-button {
   position: fixed;
