@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getArticles, Article } from '../data/articles';
-import LoadingSpinner from '../components/LoadingSpinner.tsx'; // 引入新元件
+import LoadingSpinner from '../components/LoadingSpinner'; // 確保引入了 LoadingSpinner
 
 export default function SearchResultsPage() {
   const [searchParams] = useSearchParams();
   const [results, setResults] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
-  const query = searchParams.get('q') || ''; // 從 URL 獲取搜尋關鍵字 'q'
+  const query = searchParams.get('q') || '';
 
   useEffect(() => {
     async function performSearch() {
@@ -25,7 +25,6 @@ export default function SearchResultsPage() {
         article.title_ch.toLowerCase().includes(lowerCaseQuery) ||
         article.title_ti.toLowerCase().includes(lowerCaseQuery) ||
         article.category.toLowerCase().includes(lowerCaseQuery) ||
-        // 簡單的內文搜尋，移除 HTML 標籤後進行比對
         article.content_ch.replace(/<[^>]+>/g, '').toLowerCase().includes(lowerCaseQuery) ||
         article.content_ti.replace(/<[^>]+>/g, '').toLowerCase().includes(lowerCaseQuery)
       );
@@ -44,7 +43,9 @@ export default function SearchResultsPage() {
       </h1>
       <p className="text-secondary mb-8">找到了 {results.length} 篇文章</p>
 
-      {if (loading) return <LoadingSpinner />}
+      {/* *** 這裡就是修正後的版本 *** */}
+      {/* 使用 '&&' 運算符，這是 JSX 中正確的條件渲染語法 */}
+      {loading && <LoadingSpinner />}
       
       {!loading && results.length === 0 && (
         <p>找不到與 "{query}" 相關的文章。</p>
