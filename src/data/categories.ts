@@ -1,6 +1,7 @@
 export interface Category {
   id: string; // 英文ID，用於URL
   name: string; // 中文名稱
+  name_ti: string;
   imageUrl: string; // 封面圖片路徑
   description: string; // 簡短描述
 }
