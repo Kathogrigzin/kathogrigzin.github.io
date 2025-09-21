@@ -14,7 +14,6 @@ export const categories: Category[] = [
   { id: 'biography', name: '傳紀', name_ti: 'རྣམ་ཐར་གྱི་སྐོར།', imageUrl: '/images/categories/biography.png', description: '才旺諾布生平事蹟' },
   { id: 'guhya-jnanakali', name: '密慧佛母', name_ti: 'མཁའ་འགྲོ་གསང་ཡེའི་སྐོར།', imageUrl: '/images/categories/guhya-jnanakali.jpg', description: '密慧佛母的智慧' },
   { id: 'spontaneous-aspirations', name: '祈願任運', name_ti: 'དགོངས་གཏེར་བསམ་པ་ལྷུན་གྲུབ་མའི་ཆོས་སྐོར།', imageUrl: '/images/categories/spontaneous-aspirations.png', description: '蓮師前往西南羅剎國前託付王子牟尼贊普之教言' },
-  { id: 'avalokiteshvara', name: '觀音', name_ti: 'སྤྱན་རས་གཟིགས་ཀྱི་སྐོར།', imageUrl: '/images/categories/avalokiteshvara.jpg', description: '眾生被困厄  無量苦逼身  觀音妙智力  能救世間苦' },
   { id: 'astrology', name: '星相算命', name_ti: 'རྩིས་དང་སྒྲ་ཡི་སྐོར།', imageUrl: '/images/categories/astrology.jpg', description: '時輪曆算之探究' },
   { id: 'chakrasamvara', name: '勝樂註解', name_ti: 'བདེ་མཆོག་ཉུང་ངུའི་མཆན་འགྲེལ་གྱི་སྐོར།', imageUrl: '/images/categories/chakrasamvara.png', description: '甚深註釋 須經上師指示方可閱覽' },
   { id: 'sadhana', name: '法行儀軌', name_ti: 'ཆོ་ག་ཆོས་སྤྱོད་ཀྱི་སྐོར།', imageUrl: '/images/categories/sadhana.png', description: '法用於生活' },
