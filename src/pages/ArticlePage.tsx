@@ -21,7 +21,7 @@ export default function ArticlePage() {
     loadArticle();
   }, [articleId]);
 
-  if (loading) return <LoadingSpinner />;
+  if (loading) {return <LoadingSpinner />;
   }
 
   if (!article) {
