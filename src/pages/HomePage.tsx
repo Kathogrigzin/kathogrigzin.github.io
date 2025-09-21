@@ -12,7 +12,7 @@ export default function HomePage({ startMusic }: HomePageProps) {
       {/* Hero Section */}
       <section className="relative text-center py-24 md:py-32 bg-gray-700 text-white">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center opacity-60"
           style={{ backgroundImage: `url('/images/main-banner.png')` }}
         ></div>
         <div className="relative max-w-3xl mx-auto px-4">
