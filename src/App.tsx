@@ -90,11 +90,11 @@ export default function App() {
 
   const navLinks = [
     { name: '首頁', path: '/' },
-    { name: '才旺諾布', path: '/about' },
-    { name: '古籍抄本', path: '/manuscripts' },
-    { name: '祖寺介紹', path: '/temple' },
-    { name: '參考資料', path: '/references' },
-    { name: '電子檔下載', path: '/downloads' },
+    { name: '才旺諾布', path: 'data/about' },
+    { name: '古籍抄本', path: 'data/manuscripts' },
+    { name: '祖寺介紹', path: 'data/temple' },
+    { name: '參考資料', path: 'data/references' },
+    { name: '電子檔下載', path: 'data/downloads' },
   ];
 
    return (
