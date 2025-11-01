@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'; // 引入 useEffect
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 
+
 // 引入所有需要的頁面和元件
 import HomePage from './pages/HomePage.tsx';
 import ArticlePage from './pages/ArticlePage.tsx';
@@ -90,11 +91,11 @@ export default function App() {
 
   const navLinks = [
     { name: '首頁', path: '/' },
-    { name: '才旺諾布', path: 'data/about' },
-    { name: '古籍抄本', path: 'data/manuscripts' },
-    { name: '祖寺介紹', path: 'data/temple' },
-    { name: '參考資料', path: 'data/references' },
-    { name: '電子檔下載', path: 'data/downloads' },
+    { name: '才旺諾布', path: '/preface' },
+    { name: '古籍抄本', path: '/manuscripts' },
+    { name: '祖寺介紹', path: '/temple' },
+    { name: '參考資料', path: '/reference' },
+    { name: '電子檔下載', path: '/downloads' },
   ];
 
    return (
@@ -205,7 +206,7 @@ export default function App() {
                 </div>
             </div>
             <div className="mt-12 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
-                © 2025 仁珍才旺諾布全集. All Rights Reserved.
+                © 2025 仁珍才旺諾布全集 All Rights Reserved.
             </div>
         </div>
       </footer>

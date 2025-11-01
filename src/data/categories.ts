@@ -9,15 +9,13 @@ export interface Category {
 // 假設圖片都放在 public/images/categories/ 資料夾下
 export const categories: Category[] = [
   { id: 'guru-yoga', name: '上師瑜伽', name_ti: 'བླ་རྣམ་རྒྱུན་འཁྱེར་གྱི་སྐོར།', imageUrl: '/images/categories/guru-yoga.jpg', description: '甚深上師相應法' },
-  { id: 'dohas', name: '道歌', name_ti: 'ཞལ་གདམས་མགུར་གླུ་འི་སྐོར།', imageUrl: '/images/categories/dohas.png', description: '解脫之歌詠' },
+  { id: 'dohas', name: '道歌', name_ti: 'ཞལ་གདམས་མགུར་གླུ་འི་སྐོར།', imageUrl: '/images/categories/dohas.png', description: '全心全力而實行佛法，上師父視作永遠怙主，佛法口訣當永遠財物，累積福德作永遠良田。' },
   { id: 'autobiography', name: '自傳', name_ti: 'རང་རྣམ་གྱི་སྐོར།', imageUrl: '/images/categories/autobiography.png', description: '才旺諾布自述經歷' },  
   { id: 'biography', name: '傳紀', name_ti: 'རྣམ་ཐར་གྱི་སྐོར།', imageUrl: '/images/categories/biography.png', description: '才旺諾布生平事蹟' },
   { id: 'guhya-jnanakali', name: '密慧佛母', name_ti: 'མཁའ་འགྲོ་གསང་ཡེའི་སྐོར།', imageUrl: '/images/categories/guhya-jnanakali.jpg', description: '密慧佛母的智慧' },
   { id: 'spontaneous-aspirations', name: '祈願任運', name_ti: 'དགོངས་གཏེར་བསམ་པ་ལྷུན་གྲུབ་མའི་ཆོས་སྐོར།', imageUrl: '/images/categories/spontaneous-aspirations.png', description: '蓮師前往西南羅剎國前託付王子牟尼贊普之教言' },
-  { id: 'astrology', name: '星相算命', name_ti: 'རྩིས་དང་སྒྲ་ཡི་སྐོར།', imageUrl: '/images/categories/astrology.jpg', description: '時輪曆算之探究' },
-  { id: 'chakrasamvara', name: '勝樂註解', name_ti: 'བདེ་མཆོག་ཉུང་ངུའི་མཆན་འགྲེལ་གྱི་སྐོར།', imageUrl: '/images/categories/chakrasamvara.png', description: '甚深註釋 須經上師指示方可閱覽' },
-  { id: 'sadhana', name: '法行儀軌', name_ti: 'ཆོ་ག་ཆོས་སྤྱོད་ཀྱི་སྐོར།', imageUrl: '/images/categories/sadhana.png', description: '法用於生活' },
-  { id: 'dzogchen', name: '大圓滿', name_ti: 'རྫོགས་ཆེན་གྱི་སྐོར།', imageUrl: '/images/categories/dzogchen.jpg', description: '基位實相見地、立斷頓超口訣 須經上師指示方可閱覽' },
+  { id: 'astrology', name: '星相算命', name_ti: 'རྩིས་དང་སྒྲ་ཡི་སྐོར།', imageUrl: '/images/categories/astrology.jpg', description: '少壯之士志弘遠，數理明晰通算學，欲入此門求究竟，此乃至寶眾所需。' }, 
+  { id: 'sadhana', name: '法行儀軌', name_ti: 'ཆོ་ག་ཆོས་སྤྱོད་ཀྱི་སྐོར།', imageUrl: '/images/categories/sadhana.png', description: '此等暇滿人生極難得，任誰擁有能獲究竟義。 ' },
   { id: 'aspiration', name: '祈願', name_ti: 'སྨོན་ཚིག་གི་སྐོར།', imageUrl: '/images/categories/aspiration.jpg', description: '祈願文集' },
   { id: 'empowerment', name: '灌頂', name_ti: 'དབང་ཆོག་གི་སྐོར།', imageUrl: '/images/categories/empowerment.jpg', description: '灌頂布壇儀式 須經上師允許方可閱覽' },
   { id: 'history', name: '歷史', name_ti: 'དེབ་ཐེར་དང་ཆོས་འབྱུང་གི་སྐོར།', imageUrl: '/images/categories/history.jpg', description: '歷代王統文獻、條約' },
