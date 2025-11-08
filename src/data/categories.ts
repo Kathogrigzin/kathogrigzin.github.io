@@ -14,7 +14,7 @@ export const categories: Category[] = [
   { id: 'biography', name: '傳紀', name_ti: 'རྣམ་ཐར་གྱི་སྐོར།', imageUrl: '/images/categories/biography.png', description: '才旺諾布生平事蹟' },
   { id: 'guhya-jnanakali', name: '密慧佛母', name_ti: 'མཁའ་འགྲོ་གསང་ཡེའི་སྐོར།', imageUrl: '/images/categories/guhya-jnanakali.jpg', description: '無緣空性俱生智慧母 無漏光明地生空行母 無緣自圓咒生大樂母 頂禮無執一味密慧母' },
   { id: 'spontaneous-aspirations', name: '祈願任運', name_ti: 'དགོངས་གཏེར་བསམ་པ་ལྷུན་གྲུབ་མའི་ཆོས་སྐོར།', imageUrl: '/images/categories/spontaneous-aspirations.png', description: '蓮師前往西南羅剎國前託付王子牟尼贊普之教言' },
-  { id: 'astrology', name: '星相算命', name_ti: 'རྩིས་དང་སྒྲ་ཡི་སྐོར།', imageUrl: '/images/categories/astrology.jpg', description: '少壯志弘遠 通數理算學 入此求究竟 至寶眾所需' }, 
+  { id: 'astrology', name: '天相算命', name_ti: 'རྩིས་དང་སྒྲ་ཡི་སྐོར།', imageUrl: '/images/categories/astrology (3).jpg', description: '少壯志弘遠 通數理算學 入此求究竟 至寶眾所需' }, 
   { id: 'sadhana', name: '法行儀軌', name_ti: 'ཆོ་ག་ཆོས་སྤྱོད་ཀྱི་སྐོར།', imageUrl: '/images/categories/sadhana.png', description: '諸法無我空離戲 視為幻焰與夢影 尋香城邑空谷響 ' },
   { id: 'aspiration', name: '祈願', name_ti: 'སྨོན་ཚིག་གི་སྐོར།', imageUrl: '/images/categories/aspiration.jpg', description: '祈願文集' },
   { id: 'empowerment', name: '灌頂', name_ti: 'དབང་ཆོག་གི་སྐོར།', imageUrl: '/images/categories/empowerment.jpg', description: '灌頂布壇儀式 須經上師允許方可閱覽' },
